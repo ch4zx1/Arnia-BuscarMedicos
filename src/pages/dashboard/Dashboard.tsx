@@ -1,3 +1,4 @@
+import Status from '@/components/status'
 import * as S from './styles'
 import Table from '@/components/table/table'
 import {
@@ -20,6 +21,8 @@ function Dashboard() {
     const data = await getDashboardApi()
     setDoctor(data.doctor)
     setContractor(data.contractor)
+
+	console.log(data);
   }
 
   async function getDashboardTable() {
@@ -36,7 +39,18 @@ function Dashboard() {
   return (
     <>
       <S.Body>
-        <h1>aaa</h1>
+        <S.ContainerTop>
+			<S.ContainerLeft>
+				<h3>{doctor?.name}</h3>
+			</S.ContainerLeft>
+			<S.ContainerRight>
+			<Status type='MEDICOS' n1={doctor.total} n2={doctor.available} n3={doctor.unavailable}></Status>
+			<Status type='CONTRATANTES' n1={contractor.total} n2={contractor.available} n3={contractor.unavailable}></Status>
+			</S.ContainerRight>
+		</S.ContainerTop>
+		<S.ContainerBottom>
+
+		</S.ContainerBottom>
       </S.Body>
     </>
   )

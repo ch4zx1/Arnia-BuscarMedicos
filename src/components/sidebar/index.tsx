@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import * as S from './styles'
 import Logo from '@/assets/logo.svg'
+import LogoLite from '@/assets/logolite.svg'
 
 import { useContext } from 'react'
 
@@ -38,8 +39,8 @@ function Sidebar() {
   return (
     <>
       <S.Body menuOpen={isMenuOpen}>
-        <S.ContainerLogo>
-          {isMenuOpen === true ? <img src={Logo} alt="Logo" /> : ''}
+        <S.ContainerLogo menuOpen={isMenuOpen}>
+          {isMenuOpen === true ? <img src={Logo} alt="Logo" /> : <img src={LogoLite} alt="Logo"/>}
         </S.ContainerLogo>
         <S.ContainerButton menuOpen={isMenuOpen}>
           <Link to="/dashboard" style={{ textDecoration: 'none' }}>

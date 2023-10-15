@@ -13,14 +13,14 @@ export const Body = styled.div<Props>`
   width: ${({ menuOpen }) => (menuOpen ? '271px' : '70px')};
 `
 
-export const ContainerLogo = styled.div`
+export const ContainerLogo = styled.div<Props>`
   display: flex;
-  margin-top: 24px;
+  margin-top: ${({ menuOpen }) => (menuOpen ? '24px' : '54px')};
   margin-bottom: 48px;
 `
 
 export const ContainerButton = styled.div<Props>`
-  margin-top: ${({ menuOpen }) => (menuOpen ? '0px' : '80px')};
+  margin-top: ${({ menuOpen }) => (menuOpen ? '0px' : '26px')};
   display: flex;
   flex-direction: column;
   gap: 10px;
