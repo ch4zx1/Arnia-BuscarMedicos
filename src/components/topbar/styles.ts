@@ -5,7 +5,7 @@ export const Body = styled.div`
   flex-direction: row;
 
   width: 83.8vw;
-  height: 130px;
+  height: 100px;
   padding: 37px 32px;
   justify-content: space-between;
   align-items: center;
