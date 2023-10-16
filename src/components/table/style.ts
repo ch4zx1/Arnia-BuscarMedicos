@@ -17,7 +17,6 @@ export const Table = styled.table`
 		font-family: Poppins;
 		font-size: 16px;
 		font-style: normal;
-		font-weight: 600;
 		line-height: 150%; /* 24px */
 		letter-spacing: 0.2px;
 	}
@@ -49,7 +48,6 @@ export const Table = styled.table`
 	font-family: Poppins;
 	font-size: 16px;
 	font-style: normal;
-	font-weight: 400;
 	line-height: 150%; /* 24px */
 	letter-spacing: 0.2px;
   }

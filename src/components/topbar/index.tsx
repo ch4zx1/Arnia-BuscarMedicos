@@ -1,13 +1,35 @@
 import * as S from './styles'
-
+import { getMeApi } from "@/config/api/meAPI";
 import HamburguerImage from '@/assets/hamburguer.svg'
 import UserImage from '@/assets/user.svg'
 import ArrowImage from '@/assets/arrow.svg'
 import { Button } from '../ui'
+import { useContext, useEffect, useState } from 'react';
+import { sideBarContext } from '../Context/sidebarContext';
+
 
 function TopBar() {
+
+	const [me, setMe] = useState<any>({})
+
+	async function getMeData() {
+		const data = await getMeApi()
+		setMe(data)
+	  }
+
+	  useEffect(() => {
+		getMeData()
+	  }, [])
+
+	  const [sideBar, setSideBar] = useContext(sideBarContext);
+
+	  const handleMenuToggle = () => {
+		setSideBar(!sideBar.open);
+	  };
+
   return (
     <>
+	<sideBarContext.Provider value={[sideBar, setSideBar]}>
       <S.Body>
         <Button>
           <img src={HamburguerImage}></img>
@@ -16,15 +38,16 @@ function TopBar() {
           <S.ContainerUser>
             <img src={UserImage}></img>
             <S.ContainerUserInfo>
-              <span>Izabel</span>
-              <p>izabel@gmail.com</p>
+              <span>{me.firstName}</span>
+              <p>{me.email}</p>
             </S.ContainerUserInfo>
           </S.ContainerUser>
-          <Button>
+          <Button onClick={handleMenuToggle}>
             <img src={ArrowImage}></img>
           </Button>
         </S.ContainerRight>
       </S.Body>
+	  </sideBarContext.Provider>
     </>
   )
 }

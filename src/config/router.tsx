@@ -11,26 +11,30 @@ import Dashboard from '@/pages/dashboard/Dashboard'
 import { Spinner } from '@/components/ui'
 import Sidebar from '@/components/sidebar'
 import TopBar from '@/components/topbar'
+import Users from '@/pages/users'
 
-interface LayoutProps {
-  children: ReactNode
+type LayoutProps = {
+	children: ReactNode
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => (
-  <div>
-    <S.Body>
-      <S.ContainerLeft>
-        <Sidebar />
-      </S.ContainerLeft>
-      <S.ContainerRight>
-        <TopBar></TopBar>
-        <S.ContainerContent>
-          <div>{children}</div>
-        </S.ContainerContent>
-      </S.ContainerRight>
-    </S.Body>
-  </div>
-)
+function Layout({ children }: LayoutProps) {
+
+	return (
+		<div>
+			<S.Body>
+			<S.ContainerLeft>
+				<Sidebar/>
+			</S.ContainerLeft>
+			<S.ContainerRight>
+				<TopBar></TopBar>
+				<S.ContainerContent>
+				<div>{children}</div>
+				</S.ContainerContent>
+			</S.ContainerRight>
+			</S.Body>
+		</div>
+	)
+}
 
 const router = createBrowserRouter([
   {
@@ -49,7 +53,7 @@ const router = createBrowserRouter([
     path: '/users',
     element: (
       <Layout>
-        <Dashboard />
+        <Users />
       </Layout>
     )
   },
@@ -62,7 +66,7 @@ const router = createBrowserRouter([
     )
   },
   {
-    path: '/payments',
+    path: 'payments',
     element: (
       <Layout>
         <Dashboard />

@@ -3,10 +3,7 @@ import ArrowBlue from '@/assets/right-small.svg'
 import Status from '@/components/status'
 import * as S from './styles'
 import Table from '@/components/table/table'
-import {
-  getDashboardApi,
-  getDashboardTableApi
-} from '@/config/api/dashboardAPI'
+import { getDashboardApi, getDashboardTableApi } from '@/config/api/dashboardAPI'
 import { useState, useEffect } from 'react'
 import CurrentDate from '@/components/localtime'
 
@@ -24,14 +21,34 @@ function Dashboard() {
     const data = await getDashboardApi()
     setDoctor(data.doctor)
     setContractor(data.contractor)
-
-	console.log(data);
   }
 
   async function getDashboardTable() {
     const data = await getDashboardTableApi()
     setTableData(data)
-    console.log(data)
+  }
+
+  function formatPhoneNumber(phoneNumber: string): string {
+	const numericOnly: string = phoneNumber.replace(/\D/g, '');
+	const hasElevenDigits: boolean = numericOnly.length === 11;
+  
+	const formattedNumber: string = hasElevenDigits
+	  ? `${numericOnly.substring(0, 2)} ${numericOnly.substring(2, 3)}${numericOnly.substring(3, 7)}-${numericOnly.substring(7, 11)}`
+	  : `${numericOnly.substring(0, 2)} ${numericOnly.substring(2, 6)}-${numericOnly.substring(6, 10)}`;
+  
+	return formattedNumber;
+  }
+
+  function formatProfileName(profileName: string): string {
+	// Converte para minúsculas e deixa a primeira letra maiuscula
+	const capitalized = profileName.toLowerCase().replace(/\b\w/g, firstChar => firstChar.toUpperCase());
+  
+	// Adiciona acento ao "Medico"
+	if (capitalized === "Medico") {
+	  return "Médico";
+	}
+  
+	return capitalized;
   }
 
   useEffect(() => {
@@ -69,8 +86,8 @@ function Dashboard() {
           	<tr key={dataTable.id}>
 				<td>{dataTable.firstName + ' ' + dataTable.lastName}</td>
 				<td>{dataTable.email}</td>
-				<td>{dataTable.phone}</td>
-				<td>{dataTable.profiles[0].name}</td>
+				 <td>{formatPhoneNumber(dataTable.phone)}</td>
+				 <td>{formatProfileName(dataTable.profiles[0].name)}</td>
           </tr>
         ))}
       </Table>
@@ -81,7 +98,3 @@ function Dashboard() {
   )
 }
 export default Dashboard
-
-/*
-
-*/
