@@ -26,7 +26,7 @@ function Search({ onSearch }:props) {
         value={search}
       >
       </Input>
-      <Button
+      <Button style={{cursor: 'pointer'}}
         onClick={handleButtonClick}
       >
         <img src={SearchImg} alt="Search"></img>

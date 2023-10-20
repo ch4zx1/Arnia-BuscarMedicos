@@ -74,7 +74,7 @@ export const Form = styled.div`
     outline: none;
     margin-bottom: 20px;
   }
-  input:focus:valid {
+  input:focus {
     border: 1px solid var(--sucesso, #00c247);
   }
 
@@ -87,8 +87,9 @@ export const Form = styled.div`
     font-weight: 400;
     line-height: 140%; /* 19.6px */
     letter-spacing: 0.2px;
+	margin-bottom: 5px;
   }
-  input:focus:valid + label {
+  input:focus + label {
     color: var(--sucesso, #00c247);
   }
 `

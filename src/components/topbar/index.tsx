@@ -5,7 +5,8 @@ import UserImage from "@/assets/user.svg";
 import ArrowImage from "@/assets/arrow.svg";
 import { Button } from "../ui";
 import { useContext, useEffect, useState } from "react";
-import { sideBarContext } from "../Context/sidebarContext";
+import { sideBarContext } from "../context/sidebarContext";
+import Dropdown from "../dropdown";
 
 function TopBar() {
   const [me, setMe] = useState<any>({});
@@ -20,6 +21,11 @@ function TopBar() {
   }, []);
 
   const [sideBar, setSideBar] = useContext(sideBarContext);
+  const [dropdown, setDropdown] = useState(false);
+
+  const handleDropDown = () => {
+	setDropdown(!dropdown);
+  }
 
   const handleMenuToggle = () => {
     setSideBar(!sideBar);
@@ -29,7 +35,7 @@ function TopBar() {
     <>
       <sideBarContext.Provider value={[sideBar, setSideBar]}>
         <S.Body menuOpen={sideBar}>
-          <Button onClick={handleMenuToggle}>
+          <Button style={{cursor: 'pointer'}} onClick={handleMenuToggle}>
             <img src={HamburguerImage}></img>
           </Button>
           <S.ContainerRight>
@@ -40,9 +46,12 @@ function TopBar() {
                 <p>{me.email}</p>
               </S.ContainerUserInfo>
             </S.ContainerUser>
-            <Button>
+            <Button style={{cursor: 'pointer'}} onClick={handleDropDown}>
               <img src={ArrowImage}></img>
             </Button>
+			<S.ContainerDropdown>
+				{dropdown ? <Dropdown></Dropdown> : ''}
+			</S.ContainerDropdown>
           </S.ContainerRight>
         </S.Body>
       </sideBarContext.Provider>

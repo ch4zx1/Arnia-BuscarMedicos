@@ -6,7 +6,6 @@ import Table from '@/components/table/table'
 import { getDashboardApi, getDashboardTableApi } from '@/config/api/dashboardAPI'
 import { useState, useEffect } from 'react'
 import CurrentDate from '@/components/localtime'
-import { useNavigate } from 'react-router-dom'
 
 function Dashboard() {
   const [doctor, setDoctor] = useState<any>({})
@@ -80,7 +79,7 @@ function Dashboard() {
 		<S.ContainerUC>
 			<S.ContainerTopUC>
 				<p>Últimos usuários cadastrados</p>
-				<span onClick={() => window.location.href = "./users"}>Ver tudo <img src={ArrowBlue}></img></span>
+				<span style={{cursor: 'pointer'}} onClick={() => window.location.href = "./users"}>Ver tudo <img src={ArrowBlue}></img></span>
 			</S.ContainerTopUC>
 			<Table headers={header}>
         	{tableData.map((dataTable: any) => (

@@ -7,7 +7,7 @@ import {
 } from "@/config/api/usersAPI";
 import Search from "@/components/search";
 import Table from "@/components/table/table";
-
+import { useNavigate } from 'react-router-dom'
 function Users() {
   const header = [
     { header: "Usuário", width: 200, padding: 10 },
@@ -28,6 +28,7 @@ function Users() {
   const [search, setSearch] = useState("");
   const [totalElements, setTotalElements] = useState(0);
   const [offset, setOffset] = useState(0);
+  const navigate = useNavigate();
 
   async function getUsersData() {
     const data = await getUsersApi();
@@ -204,12 +205,12 @@ function Users() {
           <S.ContainerTable>
             <Table headers={header}>
               {tableData.map((dataTable: any) => (
-                <tr key={dataTable.id}>
-                  <td style={{fontWeight: "bold"}}>{(dataTable.firstName ? dataTable.firstName : "-") + " " + (dataTable.lastName ? dataTable.lastName : "-")}</td>
+				<tr key={dataTable.id} onClick={() =>navigate("/users/details/",{state:dataTable})}>
+                  <td style={{fontWeight: "bold", cursor: 'pointer'}}>{(dataTable.firstName ? dataTable.firstName : "-") + " " + (dataTable.lastName ? dataTable.lastName : "-")}</td>
                   <td>{dataTable.email ? dataTable.email : "-"}</td>
                   <td>{dataTable.phone ? formatPhoneNumber(dataTable.phone) : "-"}</td>
                   <td>{dataTable.specialties && dataTable.specialties.length > 0
-                      ? formatProfileName(dataTable.specialties[0].name)
+                      ? dataTable.specialties[0].name
                       : "-"}</td>
                   <td>
                     {dataTable.address && dataTable.address.city
@@ -233,12 +234,12 @@ function Users() {
 		  <S.ContainerTableBottom>
 			<span>{offset} de {totalElements} itens</span>
 			<S.ContainerArrow>
-            <button onClick={goToPreviousPage} disabled={actualPage === 1}>
+            <button style={{cursor: 'pointer'}} onClick={goToPreviousPage} disabled={actualPage === 1}>
               &#60;
             </button>
 			<S.ContainerTableButtonDisabled>
 			{visiblePageNumbers.map((pageNumber) => (
-              <button
+              <button style={{cursor: 'pointer'}}
                 key={pageNumber}
                 onClick={() => goToPage(pageNumber)}
                 disabled={actualPage === pageNumber}
@@ -247,7 +248,7 @@ function Users() {
               </button>
             ))}
 			</S.ContainerTableButtonDisabled>
-            <button onClick={goToNextPage} disabled={actualPage === pages}>
+            <button style={{cursor: 'pointer'}} onClick={goToNextPage} disabled={actualPage === pages}>
               &gt;
             </button>
 			</S.ContainerArrow>

@@ -63,3 +63,10 @@ export const ContainerUserInfo = styled.div`
     letter-spacing: 0.2px;
   }
 `
+export const ContainerDropdown = styled.div`
+display: flex;
+position: absolute;
+
+margin-top: 40px;
+margin-left: 28px;
+`

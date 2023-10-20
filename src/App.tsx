@@ -1,6 +1,6 @@
 import Router from "./config/router";
 import GlobalStyles from "@/assets/styles/global-styles";
-import { sideBarContext } from "@/components/Context/sidebarContext";
+import { sideBarContext } from "@/components/context/sidebarContext";
 import { useState } from "react";
 
 function App() {

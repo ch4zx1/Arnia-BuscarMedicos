@@ -43,7 +43,7 @@ function Login() {
               E-mail
             </Input>
             <S.ContainerShowPassword>
-              <Button
+              <Button style={{cursor: 'pointer'}}
                 onClick={() => {
                   togglePassword()
                 }}
@@ -63,10 +63,10 @@ function Login() {
           </S.Form>
           <S.ContainerCheckbox>
 		 	<a href="">Esqueci minha senha</a>
-        	<Input type="Checkbox">Lembrar-me</Input>
+        	<Input style={{cursor: 'pointer'}} type="Checkbox">Lembrar-me</Input>
           </S.ContainerCheckbox>
           <S.ContainerEntrar>
-            <Button onClick={handleClick}>Entrar</Button>
+            <Button style={{cursor: 'pointer'}} onClick={handleClick}>Entrar</Button>
           </S.ContainerEntrar>
         </S.ContainerLogin>
       </S.Body>

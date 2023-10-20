@@ -50,6 +50,7 @@ padding: 18px;
 justify-content: center;
 align-items: center;
 gap: 18px;
+cursor: pointer;
 
 color: var(--cinzas-cinza-900, #212121);
 /* 20px Regular */
