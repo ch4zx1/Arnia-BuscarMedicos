@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import * as S from "./styles";
 import Logo from "@/assets/logo.svg";
 import LogoLite from "@/assets/logolite.svg";
@@ -24,11 +24,8 @@ import FaqImgGreen from "@/assets/sidebar-icons/green/help.svg";
 import { sideBarContext } from "../Context/sidebarContext";
 
 function Sidebar() {
-  const storedStateString = localStorage.getItem("activebutton");
-  
-  const storedState = storedStateString ? storedStateString : "dashboard";
-
-  const [activeButton, setActiveButton] = useState(storedState);
+  const location = useLocation();
+  const [activeButton, setActiveButton] = useState(location.pathname);
   const [isMenuOpen, setMenuOpen] = useContext(sideBarContext);
 
   const handleButtonClick = (buttonName: string) => {
@@ -36,10 +33,7 @@ function Sidebar() {
   };
 
   useEffect(() => {
-    localStorage.setItem(
-      "activebutton",
-      activeButton
-    );
+    localStorage.setItem("activebutton", activeButton);
   }, [activeButton]);
 
   return (
@@ -56,12 +50,12 @@ function Sidebar() {
           <S.ContainerButton menuOpen={isMenuOpen}>
             <Link to="/dashboard" style={{ textDecoration: "none" }}>
               <button
-                onClick={() => handleButtonClick("dashboard")}
-                className={activeButton === "dashboard" ? "active" : ""}
+                onClick={() => handleButtonClick("/dashboard")}
+                className={activeButton === "/dashboard" ? "active" : ""}
               >
                 <img
                   src={
-                    activeButton === "dashboard"
+                    activeButton === "/dashboard"
                       ? DashboardImgGreen
                       : DashboardImg
                   }
@@ -72,11 +66,11 @@ function Sidebar() {
             </Link>
             <Link to="/users" style={{ textDecoration: "none" }}>
               <button
-                onClick={() => handleButtonClick("users")}
-                className={activeButton === "users" ? "active" : ""}
+                onClick={() => handleButtonClick("/users")}
+                className={activeButton === "/users" ? "active" : ""}
               >
                 <img
-                  src={activeButton === "users" ? UserImgGreen : UserImg}
+                  src={activeButton === "/users" ? UserImgGreen : UserImg}
                   alt="Usuários cadastrados"
                 />
                 {isMenuOpen === true ? "Usuários cadastrados" : ""}
@@ -84,11 +78,11 @@ function Sidebar() {
             </Link>
             <Link to="/plans" style={{ textDecoration: "none" }}>
               <button
-                onClick={() => handleButtonClick("plans")}
-                className={activeButton === "plans" ? "active" : ""}
+                onClick={() => handleButtonClick("/plans")}
+                className={activeButton === "/plans" ? "active" : ""}
               >
                 <img
-                  src={activeButton === "plans" ? PlansImgGreen : PlansImg}
+                  src={activeButton === "/plans" ? PlansImgGreen : PlansImg}
                   alt="Planos"
                 />
                 {isMenuOpen === true ? "Planos" : ""}
@@ -96,12 +90,12 @@ function Sidebar() {
             </Link>
             <Link to="/payments" style={{ textDecoration: "none" }}>
               <button
-                onClick={() => handleButtonClick("payments")}
-                className={activeButton === "payments" ? "active" : ""}
+                onClick={() => handleButtonClick("/payments")}
+                className={activeButton === "/payments" ? "active" : ""}
               >
                 <img
                   src={
-                    activeButton === "payments" ? PaymentsImgGreen : PaymentsImg
+                    activeButton === "/payments" ? PaymentsImgGreen : PaymentsImg
                   }
                   alt="Pagamentos"
                 />
@@ -110,12 +104,12 @@ function Sidebar() {
             </Link>
             <Link to="/specialties" style={{ textDecoration: "none" }}>
               <button
-                onClick={() => handleButtonClick("specialties")}
-                className={activeButton === "specialties" ? "active" : ""}
+                onClick={() => handleButtonClick("/specialties")}
+                className={activeButton === "/specialties" ? "active" : ""}
               >
                 <img
                   src={
-                    activeButton === "specialties"
+                    activeButton === "/specialties"
                       ? SpecialtiesImgGreen
                       : SpecialtiesImg
                   }
@@ -126,12 +120,12 @@ function Sidebar() {
             </Link>
             <Link to="/notifications" style={{ textDecoration: "none" }}>
               <button
-                onClick={() => handleButtonClick("notifications")}
-                className={activeButton === "notifications" ? "active" : ""}
+                onClick={() => handleButtonClick("/notifications")}
+                className={activeButton === "/notifications" ? "active" : ""}
               >
                 <img
                   src={
-                    activeButton === "notifications"
+                    activeButton === "/notifications"
                       ? NotificationsImgGreen
                       : NotificationsImg
                   }
@@ -142,11 +136,11 @@ function Sidebar() {
             </Link>
             <Link to="/faq" style={{ textDecoration: "none" }}>
               <button
-                onClick={() => handleButtonClick("faq")}
-                className={activeButton === "faq" ? "active" : ""}
+                onClick={() => handleButtonClick("/faq")}
+                className={activeButton === "/faq" ? "active" : ""}
               >
                 <img
-                  src={activeButton === "faq" ? FaqImgGreen : FaqImg}
+                  src={activeButton === "/faq" ? FaqImgGreen : FaqImg}
                   alt="FAQ"
                 />
                 {isMenuOpen === true ? "FAQ" : ""}

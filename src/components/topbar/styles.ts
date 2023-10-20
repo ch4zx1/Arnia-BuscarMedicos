@@ -1,10 +1,14 @@
 import styled from 'styled-components'
 
-export const Body = styled.div`
+interface Props {
+  menuOpen: boolean
+}
+
+export const Body = styled.div<Props>`
   display: flex;
   flex-direction: row;
 
-  width: 83.8vw;
+  width: ${({ menuOpen }) => (menuOpen ? '83.8vw' : '95.8vw')};
   height: 100px;
   padding: 37px 32px;
   justify-content: space-between;

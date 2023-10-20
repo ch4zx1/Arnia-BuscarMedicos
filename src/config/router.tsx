@@ -12,6 +12,7 @@ import { Spinner } from '@/components/ui'
 import Sidebar from '@/components/sidebar'
 import TopBar from '@/components/topbar'
 import Users from '@/pages/users'
+import DetailedUser from '@/pages/detaileduses'
 
 type LayoutProps = {
 	children: ReactNode
@@ -96,6 +97,14 @@ const router = createBrowserRouter([
         <Dashboard />
       </Layout>
     )
+  },
+  {
+	path: '/users/details',
+	element: (
+		<Layout>
+		  <DetailedUser id={0}/>
+		</Layout>
+	  )
   }
 ])
 

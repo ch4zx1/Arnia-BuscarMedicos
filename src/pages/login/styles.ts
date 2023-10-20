@@ -53,7 +53,7 @@ export const ContainerLogin = styled.div`
 export const Form = styled.div`
   margin-top: 40px;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 
   input {
     padding: 16px;
@@ -94,7 +94,7 @@ export const Form = styled.div`
 `
 export const ContainerCheckbox = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   align-items: center;
   width: 400px;
   margin-top: 12px;
@@ -131,7 +131,7 @@ export const ContainerCheckbox = styled.div`
 `
 export const ContainerPassword = styled.div`
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 
   input {
     padding-right: 50px;

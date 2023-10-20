@@ -5,13 +5,13 @@ type Props = React.DetailedHTMLProps<
   HTMLInputElement
 > & { children: React.ReactNode }
 
-function Input({ children, ...props }: Props) {
+function Checkbox({ children, ...props }: Props) {
   return (
     <>
+	<input type='checkbox' {...props} />
 	<label> {children} </label>
-    <input {...props} />
     </>
   )
 }
 
-export default Input
+export default Checkbox

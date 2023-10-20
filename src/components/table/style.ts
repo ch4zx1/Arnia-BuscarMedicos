@@ -4,7 +4,6 @@ export const ContainerTable = styled.div`
   background-color: white;
   width: 1300px;
   height: 280px;
-  margin-left: 16px;
 `
 
 export const Table = styled.table`

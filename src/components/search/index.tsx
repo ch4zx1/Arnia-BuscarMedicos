@@ -4,12 +4,18 @@ import * as S from "./styles";
 
 import SearchImg from "@/assets/search.svg";
 import { ChangeEvent, useState } from "react";
-
-function Search() {
+type OnSearchType = (value: string) => void;
+type props = {
+  onSearch: OnSearchType
+}
+function Search({ onSearch }:props) {
   const [search, setSearch] = useState("");
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
+  };
+  const handleButtonClick = () => {
+    onSearch(search); 
   };
 
   return (
@@ -21,9 +27,7 @@ function Search() {
       >
       </Input>
       <Button
-        onClick={() => {
-          console.log(search);
-        }}
+        onClick={handleButtonClick}
       >
         <img src={SearchImg} alt="Search"></img>
       </Button>

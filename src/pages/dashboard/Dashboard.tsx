@@ -6,6 +6,7 @@ import Table from '@/components/table/table'
 import { getDashboardApi, getDashboardTableApi } from '@/config/api/dashboardAPI'
 import { useState, useEffect } from 'react'
 import CurrentDate from '@/components/localtime'
+import { useNavigate } from 'react-router-dom'
 
 function Dashboard() {
   const [doctor, setDoctor] = useState<any>({})
@@ -79,15 +80,17 @@ function Dashboard() {
 		<S.ContainerUC>
 			<S.ContainerTopUC>
 				<p>Últimos usuários cadastrados</p>
-				<span>Ver tudo <img src={ArrowBlue}></img></span>
+				<span onClick={() => window.location.href = "./users"}>Ver tudo <img src={ArrowBlue}></img></span>
 			</S.ContainerTopUC>
 			<Table headers={header}>
         	{tableData.map((dataTable: any) => (
           	<tr key={dataTable.id}>
-				<td>{dataTable.firstName + ' ' + dataTable.lastName}</td>
-				<td>{dataTable.email}</td>
-				 <td>{formatPhoneNumber(dataTable.phone)}</td>
-				 <td>{formatProfileName(dataTable.profiles[0].name)}</td>
+				<td>{(dataTable.firstName ? dataTable.firstName : "-") + " " + (dataTable.lastName ? dataTable.lastName : "-")}</td>
+				<td>{dataTable.email ? dataTable.email : "-"}</td>
+				 <td>{dataTable.phone ? formatPhoneNumber(dataTable.phone) : "-"}</td>
+				 <td>{dataTable.profiles && dataTable.profiles.length > 0
+                      ? formatProfileName(dataTable.profiles[0].name)
+                      : "-"}</td>
           </tr>
         ))}
       </Table>

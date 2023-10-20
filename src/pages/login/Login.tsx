@@ -11,16 +11,18 @@ function Login() {
   const [password, setPassword] = useState('')
 
   const [isShow, setIsShow] = useState(true)
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
   async function handleClick() {
     const user: UserType = {
       email: email,
       senha: password
     }
     LoginService(email, password)
+	
     const token = localStorage.getItem('token')
     if (token) {
-      navigate('/dashboard')
+		navigate('/dashboard')
     }
   }
   const togglePassword = () => {
@@ -34,6 +36,12 @@ function Login() {
           <span>Seja bem vindo!</span>
           <h1>Realize seu Login</h1>
           <S.Form>
+		  <Input
+              placeholder="usuario@email.com"
+              onChange={e => setEmail(e.target.value)}
+            >
+              E-mail
+            </Input>
             <S.ContainerShowPassword>
               <Button
                 onClick={() => {
@@ -52,16 +60,10 @@ function Login() {
                 </Input>
               </S.ContainerPassword>
             </S.ContainerShowPassword>
-            <Input
-              placeholder="usuario@email.com"
-              onChange={e => setEmail(e.target.value)}
-            >
-              E-mail
-            </Input>
           </S.Form>
           <S.ContainerCheckbox>
-            <Input type="Checkbox">Lembrar-me</Input>
-            <a href="">Esqueci minha senha</a>
+		 	<a href="">Esqueci minha senha</a>
+        	<Input type="Checkbox">Lembrar-me</Input>
           </S.ContainerCheckbox>
           <S.ContainerEntrar>
             <Button onClick={handleClick}>Entrar</Button>

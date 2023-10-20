@@ -86,6 +86,7 @@ width: 79.3vw;
 height: 365px;
 max-width: 1332px;
 
+padding-left: 16px;
 margin-top: 18px;
 border-radius: 24px;
 background: var(--Branco, #FFF);
@@ -99,7 +100,7 @@ flex-direction: row;
 justify-content: space-between;
 margin-top: 24px;
 margin-right: 24px;
-margin-left: 24px;
+margin-left: 10px;
 margin-bottom: 24px;
 
 p{

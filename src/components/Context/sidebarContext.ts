@@ -1,11 +1,8 @@
 import { Dispatch, SetStateAction, createContext } from "react";
 
-export type sideBar = {
-  open: boolean;
-};
 
-type sideBarContextType = [sideBar, Dispatch<SetStateAction<sideBar>>]
+type sideBarContextType = [boolean, Dispatch<SetStateAction<boolean>>]
 
-export const sideBarContext = createContext<sideBarContextType>([ {open:true}, () => ({})],)
+export const sideBarContext = createContext<sideBarContextType>([ true, () => ({})],)
 
 
