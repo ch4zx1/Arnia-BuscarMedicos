@@ -4,13 +4,16 @@ import Search from "@/components/search";
 import Filter from "@/assets/Group.svg"
 import Plus from "@/assets/plus.svg"
 import Table from "@/components/table/table";
+import Edit from "@/assets/edit.svg";
+import Delete from "@/assets/delete.svg";
+import Eye from "@/assets/eyes.svg"
 
 function Notifications() {
 
 	const header = [
 		{ header: "Título", width: 400, padding: 30 },
 		{ header: "Data de envio", width: 400, padding: 20 },
-		{ header: "Ações", width: 150, padding: 20 },
+		{ header: "Ações", width: 150, padding: 60 },
 	  ];
 
   const [activeButton, setActiveButton] = useState("Contratantes");
@@ -63,10 +66,29 @@ function Notifications() {
               <tr>
 			  <td>oi</td>
 			  <td>Oi</td>
-			  <td>Oi</td>
+			  <td>
+				<S.ActionContainer>
+				<S.ButtonEdit>
+				<img src={Eye}/>
+				</S.ButtonEdit>
+				<S.ButtonEdit>
+				<img src={Edit}/>
+				</S.ButtonEdit>
+				<S.ButtonEdit>
+				<img src={Delete}/>
+				</S.ButtonEdit>
+				</S.ActionContainer>
+			  </td>
 			  </tr>
             </Table>
 			</S.ContainerTable>
+			<S.ContainerTableBottom>
+			<span>{} de {} itens</span>
+			<S.ContainerArrow>
+			<S.ContainerTableButtonDisabled>
+			</S.ContainerTableButtonDisabled>
+			</S.ContainerArrow>
+          </S.ContainerTableBottom>
 		  </S.ContainerContent>
         </S.ContainerAll>
       </S.Body>

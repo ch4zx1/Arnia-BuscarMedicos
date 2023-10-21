@@ -154,3 +154,88 @@ display: flex;
 margin-top: 32px;
 height: 500px;
 `
+
+export const ActionContainer = styled.div`
+display: flex;
+flex-direction: row;
+gap: 16px;
+`
+
+export const ButtonEdit = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid var(--cinzas-cinza-300, #e0e0e0);
+  background: var(--Branco, #fff);
+  cursor: pointer;
+
+  img {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+`
+
+export const ContainerTableBottom = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+
+span{
+	color: var(--cinzas-cinza-500, #9E9E9E);
+	/* 14px Regular */
+	font-family: Poppins;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 140%; /* 19.6px */
+	letter-spacing: 0.2px;
+}
+
+button{
+	background-color: white;
+	border: none;
+	width: 24px;
+	height: 24px;
+	color: var(--cinzas-cinza-500, #9E9E9E);
+	text-align: center;
+	/* 14px Regular */
+	font-family: Poppins;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 140%; /* 19.6px */
+	letter-spacing: 0.2px;
+}
+`
+
+export const ContainerTableButtonDisabled = styled.div`
+
+	display: flex;
+	flex-direction: row;
+
+	button:disabled{
+		border-radius: 4px;
+		background: var(--primria-azul-1, #046639);
+
+		color: var(--Branco, #FFF);
+		text-align: center;
+		/* Small Text 14px Semibold */
+		font-family: Poppins;
+		font-size: 14px;
+		font-style: normal;
+		font-weight: 600;
+		line-height: 140%; /* 19.6px */
+		letter-spacing: 0.2px;
+	}
+`
+
+export const ContainerArrow = styled.div`
+display: flex;
+flex-direction: row;
+`

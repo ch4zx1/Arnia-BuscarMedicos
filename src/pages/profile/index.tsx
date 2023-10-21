@@ -9,10 +9,12 @@ import { useEffect, useState } from "react";
 import { getMeApi } from "@/config/api/meAPI";
 import Checkbox from "@/components/ui/checkbox";
 
+
 function Profile() {
   const [me, setMe] = useState<any>({});
   const [active, setActive] = useState("Dados");
   const [activeadmin, setActiveAdmin] = useState<null | number>(null);
+  
 
   async function getMeData() {
     const data = await getMeApi();
@@ -28,6 +30,8 @@ function Profile() {
     { firstname: "Júlio", lastname: "Soares", email: "julio@gmail.com" },
     { firstname: "Mariana", lastname: "Goulart", email: "mariana@gmail.com" },
   ];
+
+
 
   return (
     <S.Body>
