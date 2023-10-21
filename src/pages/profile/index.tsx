@@ -4,6 +4,7 @@ import ArrowGrey from "@/assets/rightc.svg";
 import ArrowBack from "@/assets/arrowback.svg";
 import Edit from "@/assets/edit.svg";
 import Delete from "@/assets/delete.svg";
+import Plus from "@/assets/plus.svg"
 import { useEffect, useState } from "react";
 import { getMeApi } from "@/config/api/meAPI";
 import Checkbox from "@/components/ui/checkbox";
@@ -98,9 +99,13 @@ function Profile() {
                       </S.ButtonEdit>
                     </S.ContainerActions>
                   </S.ContainerInfo>
-                  {index < admins.length - 1 && <S.Separator></S.Separator>}
+                  <S.Separator></S.Separator>
                 </div>
               ))}
+			  <S.ModalButon>
+				<img src={Plus}></img>
+				<span>Novo Perfil</span>
+			  </S.ModalButon>
             </>
           ) : null}
 		  {active === "Admin" && activeadmin !== null ? (

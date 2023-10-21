@@ -88,6 +88,7 @@ export const ContainerScroll = styled.div`
   margin-bottom: 10px;
   padding: 24px 24px 24px 16px;
   width: 77.8vw;
+  max-width: 1300px;
   height: 630px;
   overflow: auto;
 

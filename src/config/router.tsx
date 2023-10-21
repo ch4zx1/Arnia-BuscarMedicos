@@ -14,6 +14,8 @@ import TopBar from "@/components/topbar";
 import Users from "@/pages/users";
 import DetailedUser from "@/pages/detaileduses";
 import Profile from "@/pages/profile";
+import Notifications from "@/pages/notifications";
+import FAQ from "@/pages/faq";
 
 type LayoutProps = {
   children: ReactNode;
@@ -62,7 +64,6 @@ const router = createBrowserRouter([
     path: "/plans",
     element: (
       <Layout>
-        <Dashboard />
       </Layout>
     ),
   },
@@ -70,7 +71,6 @@ const router = createBrowserRouter([
     path: "payments",
     element: (
       <Layout>
-        <Dashboard />
       </Layout>
     ),
   },
@@ -78,7 +78,6 @@ const router = createBrowserRouter([
     path: "/specialties",
     element: (
       <Layout>
-        <Dashboard />
       </Layout>
     ),
   },
@@ -86,7 +85,7 @@ const router = createBrowserRouter([
     path: "/notifications",
     element: (
       <Layout>
-        <Dashboard />
+        <Notifications />
       </Layout>
     ),
   },
@@ -94,7 +93,7 @@ const router = createBrowserRouter([
     path: "/faq",
     element: (
       <Layout>
-        <Dashboard />
+		<FAQ></FAQ>
       </Layout>
     ),
   },
