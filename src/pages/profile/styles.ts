@@ -282,7 +282,7 @@ export const ContainerButtonRight = styled.div`
     border: 2px solid var(--Erro, #f33);
   }
 `;
-export const ModalButon = styled.div`
+export const ModalButton = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 12px;

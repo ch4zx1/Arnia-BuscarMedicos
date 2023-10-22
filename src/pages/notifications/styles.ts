@@ -61,7 +61,7 @@ letter-spacing: 0.2px;
 	font-weight: 600;
 	line-height: 140%; /* 28px */
 	letter-spacing: 0.2px;
-	
+	z-index: 999;
 	
 	background: white;
 }

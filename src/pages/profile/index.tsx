@@ -8,13 +8,14 @@ import Plus from "@/assets/plus.svg"
 import { useEffect, useState } from "react";
 import { getMeApi } from "@/config/api/meAPI";
 import Checkbox from "@/components/ui/checkbox";
+import Modal from "@/components/modal";
 
 
 function Profile() {
   const [me, setMe] = useState<any>({});
   const [active, setActive] = useState("Dados");
   const [activeadmin, setActiveAdmin] = useState<null | number>(null);
-  
+  const [modalIsOpen, setModalIsOpen] = useState(false)
 
   async function getMeData() {
     const data = await getMeApi();
@@ -106,10 +107,10 @@ function Profile() {
                   <S.Separator></S.Separator>
                 </div>
               ))}
-			  <S.ModalButon>
+			  <S.ModalButton>
 				<img src={Plus}></img>
 				<span>Novo Perfil</span>
-			  </S.ModalButon>
+			  </S.ModalButton>
             </>
           ) : null}
 		  {active === "Admin" && activeadmin !== null ? (
