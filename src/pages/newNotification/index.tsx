@@ -2,7 +2,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import * as S from "./styles";
 import ArrowBack from "@/assets/arrowback.svg";
 import Input from "@/components/ui/input";
-import Checkbox from "@/components/ui/checkbox";
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { postNotification } from "@/config/api/notificationAPI";

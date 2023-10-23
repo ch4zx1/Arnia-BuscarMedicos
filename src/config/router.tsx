@@ -65,21 +65,21 @@ const router = createBrowserRouter([
   {
     path: "/plans",
     element: (
-      <Layout children={undefined}>
+      <Layout>
       </Layout>
     ),
   },
   {
     path: "payments",
     element: (
-      <Layout children={undefined}>
+      <Layout>
       </Layout>
     ),
   },
   {
     path: "/specialties",
     element: (
-      <Layout children={undefined}>
+      <Layout>
       </Layout>
     ),
   },
