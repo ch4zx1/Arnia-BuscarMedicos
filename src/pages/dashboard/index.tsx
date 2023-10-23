@@ -7,10 +7,30 @@ import { getDashboardApi, getDashboardTableApi } from '@/config/api/dashboardAPI
 import { useState, useEffect } from 'react'
 import CurrentDate from '@/components/localtime'
 
+type DoctorType = {
+	total: number,
+	available: number,
+	unavailable: number
+}
+
+type dataTableType = {
+	id:number,
+	firstName?:string,
+	lastName?:string,
+	email?:string,
+	phone?:string,
+	profiles: [
+	{
+	  id: number,
+	  name: string,
+	  authority: string
+	}]
+
+}
 function Dashboard() {
-  const [doctor, setDoctor] = useState<any>({})
-  const [contractor, setContractor] = useState<any>({})
-  const [tableData, setTableData] = useState<Array<any>>([])
+  const [doctor, setDoctor] = useState<DoctorType>({total:0, available:0, unavailable:0})
+  const [contractor, setContractor] = useState<DoctorType>({total:0, available:0, unavailable:0})
+  const [tableData, setTableData] = useState([])
   const header = [
     { header: 'Usuário', width: 200, padding: 15},
     { header: 'E-mail', width: 200, padding: 15 },
@@ -82,7 +102,7 @@ function Dashboard() {
 				<span style={{cursor: 'pointer'}} onClick={() => window.location.href = "./users"}>Ver tudo <img src={ArrowBlue}></img></span>
 			</S.ContainerTopUC>
 			<Table headers={header}>
-        	{tableData.map((dataTable: any) => (
+        	{tableData.map((dataTable: dataTableType) => (
           	<tr key={dataTable.id}>
 				<td>{(dataTable.firstName ? dataTable.firstName : "-") + " " + (dataTable.lastName ? dataTable.lastName : "-")}</td>
 				<td>{dataTable.email ? dataTable.email : "-"}</td>

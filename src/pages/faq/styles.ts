@@ -78,7 +78,7 @@ background: var(--Branco, #FFF);
 box-shadow: 0px 0px 25px 0px rgba(163, 163, 163, 0.20);
 
 width: 79.3vw;
-height: 565px;
+
 max-width: 1332px;
 padding: 24px;
 `
@@ -152,7 +152,9 @@ img{
 export const ContainerTable = styled.div`
 display: flex;
 margin-top: 32px;
+margin-bottom: 15px;
 height: 500px;
+
 `
 
 export const ActionContainer = styled.div`

@@ -23,8 +23,7 @@ function Search({ onSearch }:props) {
       <Input
         placeholder="Pesquise uma palavra-chave"
         onChange={handleInputChange}
-        value={search}
-      >
+        value={search} children={undefined}      >
       </Input>
       <Button style={{cursor: 'pointer'}}
         onClick={handleButtonClick}

@@ -78,7 +78,7 @@ background: var(--Branco, #FFF);
 box-shadow: 0px 0px 25px 0px rgba(163, 163, 163, 0.20);
 
 width: 79.3vw;
-height: 565px;
+min-height: fit-content;
 max-width: 1332px;
 padding: 24px;
 `

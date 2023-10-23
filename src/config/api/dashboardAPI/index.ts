@@ -1,7 +1,20 @@
 import api from '@/config/api'
 const token = localStorage.getItem('token')
 
-export const getDashboardApi = () =>
+type DashboardType = {
+  doctor: {
+      total: number,
+      available: number,
+      unavailable: number
+  },
+  contractor: {
+      total: number,
+      available: number,
+      unavailable: number
+  }
+}
+
+export const getDashboardApi = ():Promise<DashboardType> =>
   api
     .get('/users/dashboard', {
       headers: {
