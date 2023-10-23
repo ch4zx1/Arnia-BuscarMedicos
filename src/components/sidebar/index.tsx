@@ -49,7 +49,8 @@ function Sidebar() {
           </S.ContainerLogo>
           <S.ContainerButton menuOpen={isMenuOpen}>
             <Link to="/dashboard" style={{ textDecoration: "none" }}>
-              <button style={{cursor: 'pointer'}}
+              <button
+                style={{ cursor: "pointer" }}
                 onClick={() => handleButtonClick("/dashboard")}
                 className={activeButton === "/dashboard" ? "active" : ""}
               >
@@ -65,7 +66,8 @@ function Sidebar() {
               </button>
             </Link>
             <Link to="/users" style={{ textDecoration: "none" }}>
-              <button style={{cursor: 'pointer'}}
+              <button
+                style={{ cursor: "pointer" }}
                 onClick={() => handleButtonClick("/users")}
                 className={activeButton === "/users" ? "active" : ""}
               >
@@ -77,7 +79,8 @@ function Sidebar() {
               </button>
             </Link>
             <Link to="/plans" style={{ textDecoration: "none" }}>
-              <button style={{cursor: 'pointer'}}
+              <button
+                style={{ cursor: "pointer" }}
                 onClick={() => handleButtonClick("/plans")}
                 className={activeButton === "/plans" ? "active" : ""}
               >
@@ -89,7 +92,8 @@ function Sidebar() {
               </button>
             </Link>
             <Link to="/payments" style={{ textDecoration: "none" }}>
-              <button style={{cursor: 'pointer'}}
+              <button
+                style={{ cursor: "pointer" }}
                 onClick={() => handleButtonClick("/payments")}
                 className={activeButton === "/payments" ? "active" : ""}
               >
@@ -105,7 +109,8 @@ function Sidebar() {
               </button>
             </Link>
             <Link to="/specialties" style={{ textDecoration: "none" }}>
-              <button style={{cursor: 'pointer'}}
+              <button
+                style={{ cursor: "pointer" }}
                 onClick={() => handleButtonClick("/specialties")}
                 className={activeButton === "/specialties" ? "active" : ""}
               >
@@ -121,7 +126,8 @@ function Sidebar() {
               </button>
             </Link>
             <Link to="/notifications" style={{ textDecoration: "none" }}>
-              <button style={{cursor: 'pointer'}}
+              <button
+                style={{ cursor: "pointer" }}
                 onClick={() => handleButtonClick("/notifications")}
                 className={activeButton === "/notifications" ? "active" : ""}
               >
@@ -137,7 +143,8 @@ function Sidebar() {
               </button>
             </Link>
             <Link to="/faq" style={{ textDecoration: "none" }}>
-              <button style={{cursor: 'pointer'}}
+              <button
+                style={{ cursor: "pointer" }}
                 onClick={() => handleButtonClick("/faq")}
                 className={activeButton === "/faq" ? "active" : ""}
               >
