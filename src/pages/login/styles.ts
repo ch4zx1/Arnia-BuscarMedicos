@@ -1,9 +1,10 @@
 import styled from 'styled-components'
+import Background from '@/assets/background.png'
 
 export const Body = styled.div`
   width: 100vw;
   height: 100vh;
-  background-image: url(./src/assets/background.png);
+  background-image: url(${Background});
   background-repeat: no-repeat;
   background-color: #e5e5e5;
   display: flex;

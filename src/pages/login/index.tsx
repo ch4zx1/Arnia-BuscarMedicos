@@ -5,6 +5,7 @@ import Input from '@/components/ui/input'
 import { LoginService } from '@/config/api/loginAPI'
 import { useNavigate } from 'react-router-dom'
 import { UserType } from '@/config/types'
+import ShowPass from '@/assets/showpass.svg'
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -48,7 +49,7 @@ function Login() {
                   togglePassword()
                 }}
               >
-                <img src=".\src\assets\showpass.svg"></img>
+                <img src={ShowPass}></img>
               </Button>
               <S.ContainerPassword>
                 <Input
