@@ -10,6 +10,7 @@ border-radius: 5px;
 background: var(--primria-azul-2, #0E9658);
 margin-left: 32px;
 align-items: center;
+align-content: center;
 
 img{
 	margin-left: 8px;
@@ -28,5 +29,6 @@ p{
 	font-weight: 400;
 	line-height: 140%; /* 19.6px */
 	letter-spacing: 0.2px;
+	margin-top: 18px;
 }
 `

@@ -40,6 +40,7 @@ export const ContainerUserInfo = styled.div`
   justify-content: center;
   margin-left: 16px;
   margin-right: 42px;
+  margin-top: 12px;
 
   span {
     color: var(--cinzas-cinza-900, #212121);

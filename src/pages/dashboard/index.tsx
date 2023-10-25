@@ -27,6 +27,7 @@ type dataTableType = {
 	}]
 
 }
+
 function Dashboard() {
   const [doctor, setDoctor] = useState<DoctorType>({total:0, available:0, unavailable:0})
   const [contractor, setContractor] = useState<DoctorType>({total:0, available:0, unavailable:0})

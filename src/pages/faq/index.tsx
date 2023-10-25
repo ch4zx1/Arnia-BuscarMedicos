@@ -21,7 +21,7 @@ function FAQ() {
 
   const [activeButton, setActiveButton] = useState("Contratantes");
   const [search, setSearch] = useState("");
-  const [pages, setPages] = useState<any>(0);
+  const [pages, setPages] = useState<number>(0);
   const [actualPage, setActualPage] = useState(1);
   const [visiblePages, setVisiblePages] = useState(4);
 const [data, setData] = useState([{}])
@@ -69,7 +69,7 @@ const navigate = useNavigate();
       setActualPage(pageNumber);
     }
   };
-  const visiblePageNumbers: any[] = [];
+  const visiblePageNumbers: number[] = [];
   let startPage = Math.max(actualPage - Math.floor(visiblePages / 2), 1);
   let endPage = Math.min(startPage + visiblePages - 1, pages);
 

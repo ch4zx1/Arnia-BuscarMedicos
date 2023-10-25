@@ -7,7 +7,7 @@ import {
 } from "@/config/api/usersAPI";
 import Search from "@/components/search";
 import Table from "@/components/table/table";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 function Users() {
   const header = [
     { header: "Usuário", width: 200, padding: 10 },
@@ -19,10 +19,60 @@ function Users() {
     { header: "Tipo de usuário", width: 200, padding: 10 },
   ];
 
-  const [users, setUsers] = useState<any>({});
+  type usersType = {
+    total?: number;
+    totalContractor?: number;
+    totalDoctors?: number;
+  };
+
+  type User = {
+    id?: number;
+    email?: string;
+    firstName?: string;
+    lastName?: string;
+    phone?: string;
+    profiles: [
+      {
+        id?: number;
+        name: string;
+        authority?: string;
+      }
+    ];
+    specialties?: [
+      {
+        id?: number;
+        name?: string;
+      }
+    ];
+    address?: [
+      {
+        id?: number;
+        zipcode?: string;
+        street?: string;
+        number?: string;
+        neighborhood?: string;
+        city?: string;
+        state?: string;
+        complement?: string;
+      }
+    ];
+    enabled?: boolean;
+    authorities?: [
+      {
+        authority?: string;
+      }
+    ];
+    username?: string;
+  };
+
+  const [users, setUsers] = useState<usersType>({
+    total: 0,
+    totalContractor: 0,
+    totalDoctors: 0,
+  });
   const [activeButton, setActiveButton] = useState("Todos");
-  const [tableData, setTableData] = useState<Array<any>>([]);
-  const [pages, setPages] = useState<any>(0);
+  const [tableData, setTableData] = useState([]);
+  const [pages, setPages] = useState<number>(0);
   const [actualPage, setActualPage] = useState(1);
   const [visiblePages, setVisiblePages] = useState(4);
   const [search, setSearch] = useState("");
@@ -39,8 +89,8 @@ function Users() {
     const data = await getUsersAllTableApi(actualPage, search);
     setTableData(data.content);
     setPages(data.totalPages);
-	setTotalElements(data.totalElements)
-	setOffset(data.pageable.offset)
+    setTotalElements(data.totalElements);
+    setOffset(data.pageable.offset);
   }
 
   async function getTableDataByType() {
@@ -56,8 +106,8 @@ function Users() {
 
     setTableData(data.content);
     setPages(data.totalPages);
-	setTotalElements(data.totalElements)
-	setOffset(data.pageable.offset)
+    setTotalElements(data.totalElements);
+    setOffset(data.pageable.offset);
   }
 
   const handleButtonClick = (buttonName: string) => {
@@ -122,7 +172,7 @@ function Users() {
       setActualPage(pageNumber);
     }
   };
-  const visiblePageNumbers: any[] = [];
+  const visiblePageNumbers: number[] = [];
   let startPage = Math.max(actualPage - Math.floor(visiblePages / 2), 1);
   let endPage = Math.min(startPage + visiblePages - 1, pages);
 
@@ -134,7 +184,7 @@ function Users() {
     }
   }
 
-  for (let i= startPage; i <= endPage; i++) {
+  for (let i = startPage; i <= endPage; i++) {
     visiblePageNumbers.push(i);
   }
 
@@ -204,22 +254,35 @@ function Users() {
           </S.ContainerContentRow>
           <S.ContainerTable>
             <Table headers={header}>
-              {tableData.map((dataTable: any) => (
-				<tr key={dataTable.id} onClick={() =>navigate("/users/details/",{state:dataTable})}>
-                  <td style={{fontWeight: "bold", cursor: 'pointer'}}>{(dataTable.firstName ? dataTable.firstName : "-") + " " + (dataTable.lastName ? dataTable.lastName : "-")}</td>
+              {tableData.map((dataTable: User) => (
+                <tr
+                  key={dataTable.id}
+                  onClick={() =>
+                    navigate("/users/details/", { state: dataTable })
+                  }
+                >
+                  <td style={{ fontWeight: "bold", cursor: "pointer" }}>
+                    {(dataTable.firstName ? dataTable.firstName : "-") +
+                      " " +
+                      (dataTable.lastName ? dataTable.lastName : "-")}
+                  </td>
                   <td>{dataTable.email ? dataTable.email : "-"}</td>
-                  <td>{dataTable.phone ? formatPhoneNumber(dataTable.phone) : "-"}</td>
-                  <td>{dataTable.specialties && dataTable.specialties.length > 0
-                      ? dataTable.specialties[0].name
-                      : "-"}</td>
                   <td>
-                    {dataTable.address && dataTable.address.city
-                      ? dataTable.address.city
+                    {dataTable.phone ? formatPhoneNumber(dataTable.phone) : "-"}
+                  </td>
+                  <td>
+                    {dataTable.specialties && dataTable.specialties.length > 0
+                      ? dataTable.specialties[0].name
                       : "-"}
                   </td>
                   <td>
-                    {dataTable.address && dataTable.address.state
-                      ? dataTable.address.state
+                    {dataTable.address && dataTable.address[0].city
+                      ? dataTable.address[0].city
+                      : "-"}
+                  </td>
+                  <td>
+                    {dataTable.address && dataTable.address[0].state
+                      ? dataTable.address[0].state
                       : "-"}
                   </td>
                   <td>
@@ -231,27 +294,38 @@ function Users() {
               ))}
             </Table>
           </S.ContainerTable>
-		  <S.ContainerTableBottom>
-			<span>{offset} de {totalElements} itens</span>
-			<S.ContainerArrow>
-            <button style={{cursor: 'pointer'}} onClick={goToPreviousPage} disabled={actualPage === 1}>
-              &#60;
-            </button>
-			<S.ContainerTableButtonDisabled>
-			{visiblePageNumbers.map((pageNumber) => (
-              <button style={{cursor: 'pointer'}}
-                key={pageNumber}
-                onClick={() => goToPage(pageNumber)}
-                disabled={actualPage === pageNumber}
+          <S.ContainerTableBottom>
+            <span>
+              {offset} de {totalElements} itens
+            </span>
+            <S.ContainerArrow>
+              <button
+                style={{ cursor: "pointer" }}
+                onClick={goToPreviousPage}
+                disabled={actualPage === 1}
               >
-                {pageNumber}
+                &#60;
               </button>
-            ))}
-			</S.ContainerTableButtonDisabled>
-            <button style={{cursor: 'pointer'}} onClick={goToNextPage} disabled={actualPage === pages}>
-              &gt;
-            </button>
-			</S.ContainerArrow>
+              <S.ContainerTableButtonDisabled>
+                {visiblePageNumbers.map((pageNumber) => (
+                  <button
+                    style={{ cursor: "pointer" }}
+                    key={pageNumber}
+                    onClick={() => goToPage(pageNumber)}
+                    disabled={actualPage === pageNumber}
+                  >
+                    {pageNumber}
+                  </button>
+                ))}
+              </S.ContainerTableButtonDisabled>
+              <button
+                style={{ cursor: "pointer" }}
+                onClick={goToNextPage}
+                disabled={actualPage === pages}
+              >
+                &gt;
+              </button>
+            </S.ContainerArrow>
           </S.ContainerTableBottom>
         </S.ContainerContent>
       </S.ContainerAll>

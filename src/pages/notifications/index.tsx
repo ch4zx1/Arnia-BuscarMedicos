@@ -25,7 +25,7 @@ function Notifications() {
     const navigate = useNavigate()
   const [activeButton, setActiveButton] = useState("Contratantes");
   const [search, setSearch] = useState("");
-  const [pages, setPages] = useState<any>(0);
+  const [pages, setPages] = useState<number>(0);
   const [actualPage, setActualPage] = useState(1);
   const [visiblePages, setVisiblePages] = useState(4);
 const [data, setData] = useState([{}])
@@ -90,7 +90,7 @@ const [offset, setOffset] = useState(0);
   function formatarData(dataString:string) {
     const data = new Date(dataString);
     const dia = String(data.getUTCDate()).padStart(2, '0');
-    const mes = String(data.getUTCMonth() + 1).padStart(2, '0'); // Os meses são baseados em zero, então é necessário adicionar 1
+    const mes = String(data.getUTCMonth() + 1).padStart(2, '0');
     const ano = data.getUTCFullYear();
     return `${dia}/${mes}/${ano}`;
 }

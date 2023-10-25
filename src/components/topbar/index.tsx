@@ -8,8 +8,21 @@ import { useContext, useEffect, useState } from "react";
 import { sideBarContext } from "@/components/context/sidebarContext";
 import Dropdown from "../dropdown";
 
+type MeType = {
+	id?: number,
+	email?: string,
+	firstName?: string,
+	lastName?: string,
+	profiles?: [{
+	  id: number,
+	  name: string,
+	  authority: string;
+	}];
+	enabled?: boolean;
+  };
+
 function TopBar() {
-  const [me, setMe] = useState<any>({});
+  const [me, setMe] = useState<MeType>({});
 
   async function getMeData() {
     const data = await getMeApi();

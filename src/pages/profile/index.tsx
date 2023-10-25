@@ -8,11 +8,22 @@ import Plus from "@/assets/plus.svg"
 import { useEffect, useState } from "react";
 import { getMeApi } from "@/config/api/meAPI";
 import Checkbox from "@/components/ui/checkbox";
-import Modal from "@/components/modal";
 
+type MeType = {
+	id?: number,
+	email?: string,
+	firstName?: string,
+	lastName?: string,
+	profiles?: [{
+	  id: number,
+	  name: string,
+	  authority: string;
+	}];
+	enabled?: boolean;
+  };
 
 function Profile() {
-  const [me, setMe] = useState<any>({});
+  const [me, setMe] = useState<MeType>({});
   const [active, setActive] = useState("Dados");
   const [activeadmin, setActiveAdmin] = useState<null | number>(null);
   const [modalIsOpen, setModalIsOpen] = useState(false)
