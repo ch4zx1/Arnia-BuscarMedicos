@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Body = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ export const Body = styled.div`
 
     color: var(--cinza-600, #757575);
     /* 16px Regular */
-	font-family: Poppins;
+    font-family: Poppins;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -33,4 +33,4 @@ export const Body = styled.div`
     background-color: transparent;
     border-style: none;
   }
-`
+`;

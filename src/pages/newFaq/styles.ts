@@ -1,18 +1,5 @@
 import styled from "styled-components";
-
-type PropsData = {
-  height: string;
-  width: string;
-};
-
-type PropsInput = {
-  height: number;
-  width?: number;
-};
-
-type ModalProps = {
-  visibility: string;
-};
+import { PropsData, PropsInput, ModalProps } from "@/config/types";
 
 export const Body = styled.div`
   display: flex;
@@ -111,7 +98,7 @@ export const ContainerScroll = styled.div`
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: #E0E0E0;
+    background: #e0e0e0;
   }
 `;
 
@@ -154,7 +141,7 @@ export const InputCustom = styled.div<PropsInput>`
     height: ${(props) => props.height}px;
     border-radius: 16px;
     border: 1px solid var(--cinzas-cinza-300, #e0e0e0);
-    background: var(--white, #FFF);
+    background: var(--white, #fff);
     color: var(--cinzas-cinza-700, #616161);
     /* 16px Regular */
     font-family: Poppins;
@@ -172,7 +159,7 @@ export const InputCustom = styled.div<PropsInput>`
     height: ${(props) => props.height}px;
     border-radius: 16px;
     border: 1px solid var(--cinzas-cinza-300, #e0e0e0);
-    background: var(--white, #FFF);
+    background: var(--white, #fff);
     color: var(--cinzas-cinza-700, #616161);
     /* 16px Regular */
     font-family: Poppins;
@@ -185,24 +172,24 @@ export const InputCustom = styled.div<PropsInput>`
     padding: 16px 20px 16px 20px;
     resize: none;
 
-	&::-webkit-scrollbar {
-    width: 10px;
-  }
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
 
-  &::-webkit-scrollbar-track {
-    background: none;
-	margin-top: 15px;
-	margin-bottom: 15px;
-  }
+    &::-webkit-scrollbar-track {
+      background: none;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
 
-  &::-webkit-scrollbar-thumb {
-    background: #eee;
-    border-radius: 24px;
-  }
+    &::-webkit-scrollbar-thumb {
+      background: #eee;
+      border-radius: 24px;
+    }
 
-  &::-webkit-scrollbar-thumb:hover {
-    background: #E0E0E0;
-  }
+    &::-webkit-scrollbar-thumb:hover {
+      background: #e0e0e0;
+    }
   }
 
   label {
@@ -332,12 +319,12 @@ export const ModalContainer = styled.div<ModalProps>`
 `;
 
 export const ContainerConfirmation = styled.div`
-display: flex;
-flex-direction: row;
-justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 
-margin-top: 32px;
-margin-bottom: 32px;
+  margin-top: 32px;
+  margin-bottom: 32px;
 
   span {
     font-family: Sora;
@@ -348,7 +335,7 @@ margin-bottom: 32px;
     color: #212121;
     margin-top: 25px;
   }
-`
+`;
 
 export const ModalBody = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import CalendarImg from "@/assets/calendar.svg";
-import { TimeProps } from "@/config/types"
+import { TimeProps } from "@/config/types";
 
 function formatDate(date: Date, locale: string): string {
   const options: Intl.DateTimeFormatOptions = {

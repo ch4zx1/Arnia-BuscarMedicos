@@ -155,3 +155,22 @@ export type TableProps = {
 
   children: ReactNode;
 };
+
+export type MenuProps = {
+  menuOpen: boolean;
+};
+
+export type PropsData = {
+  height: string;
+  width: string;
+};
+
+export type PropsInput = {
+  height: number;
+  width?: number;
+  disable?: boolean;
+};
+
+export type ModalProps = {
+  visibility: string;
+};

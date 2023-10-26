@@ -1,13 +1,5 @@
 import styled from "styled-components";
-
-type PropsData = {
-  height: string;
-  width: string;
-};
-
-type PropsInput = {
-  height: number;
-};
+import { PropsData, PropsInput } from "@/config/types";
 
 export const Body = styled.div`
   display: flex;
@@ -106,7 +98,7 @@ export const ContainerScroll = styled.div`
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: #E0E0E0;
+    background: #e0e0e0;
   }
 `;
 

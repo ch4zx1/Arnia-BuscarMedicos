@@ -24,20 +24,17 @@ function NewFAQ() {
   const handleShow = () => setShow(true);
 
   async function newFaqApi() {
-	if(title != "" && message != "")
-	{
-		try {
-			await postFaq(title, message, "teste");
-			handleShow();
-			setTimeout(() => navigate("/faq"), 2000);
-		  } catch (error) {
-			notify(error as string);
-		  }
-	}
-	else
-	{
-		notify('Preenche os campos antes de enviar.');
-	}
+    if (title != "" && message != "") {
+      try {
+        await postFaq(title, message, "teste");
+        handleShow();
+        setTimeout(() => navigate("/faq"), 2000);
+      } catch (error) {
+        notify(error as string);
+      }
+    } else {
+      notify("Preenche os campos antes de enviar.");
+    }
   }
 
   return (
@@ -47,9 +44,9 @@ function NewFAQ() {
           <S.ModalBody>
             <button onClick={handleClose}>X</button>
             <img src={okMark} />
-			<S.ContainerConfirmation>
-			<span>Pergunta salva com sucesso</span>
-			</S.ContainerConfirmation>
+            <S.ContainerConfirmation>
+              <span>Pergunta salva com sucesso</span>
+            </S.ContainerConfirmation>
           </S.ModalBody>
         </Modal.Body>
       </Modal>

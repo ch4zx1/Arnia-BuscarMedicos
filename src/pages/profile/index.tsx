@@ -99,8 +99,7 @@ function Profile() {
             {active === "Senha" ? (
               <>
                 <h2>Alterar senha</h2>
-                <S.ContainerInfo>
-                </S.ContainerInfo>
+                <S.ContainerInfo></S.ContainerInfo>
               </>
             ) : null}
 

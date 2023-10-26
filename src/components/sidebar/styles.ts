@@ -1,10 +1,7 @@
 import styled from "styled-components";
+import { MenuProps } from "@/config/types";
 
-interface Props {
-  menuOpen: boolean;
-}
-
-export const Body = styled.div<Props>`
+export const Body = styled.div<MenuProps>`
   display: flex;
   flex-direction: column;
   background: #046639;
@@ -13,13 +10,13 @@ export const Body = styled.div<Props>`
   width: ${({ menuOpen }) => (menuOpen ? "271px" : "70px")};
 `;
 
-export const ContainerLogo = styled.div<Props>`
+export const ContainerLogo = styled.div<MenuProps>`
   display: flex;
   margin-top: ${({ menuOpen }) => (menuOpen ? "24px" : "54px")};
   margin-bottom: 48px;
 `;
 
-export const ContainerButton = styled.div<Props>`
+export const ContainerButton = styled.div<MenuProps>`
   margin-top: ${({ menuOpen }) => (menuOpen ? "0px" : "26px")};
   display: flex;
   flex-direction: column;

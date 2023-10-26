@@ -4,7 +4,6 @@ import * as S from "./styles";
 import Logo from "@/assets/logo.svg";
 import LogoLite from "@/assets/logolite.svg";
 
-// Importa as imagens brancas
 import DashboardImg from "@/assets/sidebar-icons/white/pie-two.svg";
 import UserImg from "@/assets/sidebar-icons/white/every-user.svg";
 import PlansImg from "@/assets/sidebar-icons/white/dollar.svg";
@@ -13,7 +12,6 @@ import SpecialtiesImg from "@/assets/sidebar-icons/white/composition.svg";
 import NotificationsImg from "@/assets/sidebar-icons/white/remind.svg";
 import FaqImg from "@/assets/sidebar-icons/white/help.svg";
 
-// Importa as versões verdes
 import DashboardImgGreen from "@/assets/sidebar-icons/green/pie-two.svg";
 import UserImgGreen from "@/assets/sidebar-icons/green/every-user.svg";
 import PlansImgGreen from "@/assets/sidebar-icons/green/dollar.svg";

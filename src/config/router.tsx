@@ -1,11 +1,8 @@
 import * as S from "./styles";
 
-import { Suspense } from "react";
+import { Suspense, ReactNode } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { ReactNode } from "react";
 
-// PAGES
-//import Home from '@/pages/home'
 import Login from "@/pages/login";
 import Dashboard from "@/pages/dashboard";
 import { Spinner } from "@/components/ui";
@@ -19,7 +16,6 @@ import FAQ from "@/pages/faq";
 import NewFAQ from "@/pages/newFaq";
 import NewNotification from "@/pages/newNotification";
 import { LayoutProps } from "@/config/types";
-
 
 function Layout({ children }: LayoutProps) {
   return (

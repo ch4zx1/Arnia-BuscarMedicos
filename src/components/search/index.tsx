@@ -14,7 +14,6 @@ function Search({ onSearch }: OnSearchProps) {
   };
   const handleButtonClick = () => {
     onSearch(search);
-
   };
 
   return (

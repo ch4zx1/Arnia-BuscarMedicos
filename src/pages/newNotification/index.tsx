@@ -31,20 +31,18 @@ function NewNotification() {
   };
 
   async function newNotificationApi() {
-	if(title != "" && message != "")
-	{
-		try {
-			await postNotification(title, message, "teste");
-			handleConfirmationClose();
-			handleConfirmatedShow();
-			setTimeout(() => navigate("/notifications"), 2000);
-		  } catch (error) {
-			notify(error as string);
-		  }
-	}
-	else{
-		notify("Preencha todos os campos!");
-	}
+    if (title != "" && message != "") {
+      try {
+        await postNotification(title, message, "teste");
+        handleConfirmationClose();
+        handleConfirmatedShow();
+        setTimeout(() => navigate("/notifications"), 2000);
+      } catch (error) {
+        notify(error as string);
+      }
+    } else {
+      notify("Preencha todos os campos!");
+    }
   }
 
   return (
@@ -87,21 +85,21 @@ function NewNotification() {
               </S.ContainerData2>
             </S.ContainerScroll>
             <S.ModalFooter>
-				<S.ContainerFotter>
-				<h2>
-                Esse procedimento <span>não pode ser desfeito</span>
-              </h2>
-              <S.CancelButton onClick={handleConfirmationClose}>
-                Cancelar
-              </S.CancelButton>
-              <S.ConfirmButton
-                onClick={() => {
-                  newNotificationApi();
-                }}
-              >
-                Confirmar e enviar notificação
-              </S.ConfirmButton>
-				</S.ContainerFotter>
+              <S.ContainerFotter>
+                <h2>
+                  Esse procedimento <span>não pode ser desfeito</span>
+                </h2>
+                <S.CancelButton onClick={handleConfirmationClose}>
+                  Cancelar
+                </S.CancelButton>
+                <S.ConfirmButton
+                  onClick={() => {
+                    newNotificationApi();
+                  }}
+                >
+                  Confirmar e enviar notificação
+                </S.ConfirmButton>
+              </S.ContainerFotter>
             </S.ModalFooter>
           </S.ModalBody>
         </Modal.Body>
@@ -114,9 +112,9 @@ function NewNotification() {
               X
             </button>
             <img src={okMark} />
-			<S.ContainerConfirmation>
-			<span>Notificação salva com sucesso</span>
-			</S.ContainerConfirmation>
+            <S.ContainerConfirmation>
+              <span>Notificação salva com sucesso</span>
+            </S.ContainerConfirmation>
           </S.ModalBody>
         </Modal.Body>
       </Modal>
