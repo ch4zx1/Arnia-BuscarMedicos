@@ -18,10 +18,8 @@ import Notifications from "@/pages/notifications";
 import FAQ from "@/pages/faq";
 import NewFAQ from "@/pages/newFaq";
 import NewNotification from "@/pages/newNotification";
+import { LayoutProps } from "@/config/types";
 
-type LayoutProps = {
-  children: ReactNode;
-};
 
 function Layout({ children }: LayoutProps) {
   return (
@@ -64,24 +62,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/plans",
-    element: (
-      <Layout>
-      </Layout>
-    ),
+    element: <Layout></Layout>,
   },
   {
     path: "payments",
-    element: (
-      <Layout>
-      </Layout>
-    ),
+    element: <Layout></Layout>,
   },
   {
     path: "/specialties",
-    element: (
-      <Layout>
-      </Layout>
-    ),
+    element: <Layout></Layout>,
   },
   {
     path: "/notifications",
@@ -95,7 +84,7 @@ const router = createBrowserRouter([
     path: "/faq",
     element: (
       <Layout>
-		<FAQ></FAQ>
+        <FAQ></FAQ>
       </Layout>
     ),
   },
@@ -114,7 +103,8 @@ const router = createBrowserRouter([
         <Profile />
       </Layout>
     ),
-  },{
+  },
+  {
     path: "/faq/new",
     element: (
       <Layout>
@@ -129,7 +119,7 @@ const router = createBrowserRouter([
         <NewNotification />
       </Layout>
     ),
-  }
+  },
 ]);
 
 export default function Router() {

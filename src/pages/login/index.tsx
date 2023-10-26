@@ -26,7 +26,7 @@ function Login() {
     try {
       await LoginService(email, password);
     } catch (error) {
-      notify('E-mail ou senha incorretos.');
+      notify("E-mail ou senha incorretos.");
     }
   }
   const togglePassword = () => {
@@ -83,7 +83,7 @@ function Login() {
           </S.ContainerEntrar>
         </S.ContainerLogin>
       </S.Body>
-	  <ToastContainer />
+      <ToastContainer />
     </>
   );
 }

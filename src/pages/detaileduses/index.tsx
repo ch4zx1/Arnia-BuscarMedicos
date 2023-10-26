@@ -7,7 +7,7 @@ import Checkbox from "@/components/ui/checkbox";
 function DetailedUser() {
   const navigate = useNavigate();
   const location = useLocation();
-  const userData =  location.state
+  const userData = location.state;
   return (
     <>
       <S.Body>
@@ -23,22 +23,28 @@ function DetailedUser() {
               <h1>Dados pessoais</h1>
               <S.ContainerData width="820px" height="194px">
                 <S.InputCustom height={56}>
-                  <Input disabled value={userData.firstName ? userData.firstName : '-'}>
+                  <Input
+                    disabled
+                    value={userData.firstName ? userData.firstName : "-"}
+                  >
                     Primeiro nome
                   </Input>
                 </S.InputCustom>
                 <S.InputCustom height={56}>
-                  <Input disabled value={userData.lastName ? userData.lastName : '-'}>
+                  <Input
+                    disabled
+                    value={userData.lastName ? userData.lastName : "-"}
+                  >
                     Sobrenome
                   </Input>
                 </S.InputCustom>
                 <S.InputCustom height={56}>
-                  <Input disabled value={userData.email ? userData.email : '-'}>
+                  <Input disabled value={userData.email ? userData.email : "-"}>
                     E-mail
                   </Input>
                 </S.InputCustom>
                 <S.InputCustom height={56}>
-                  <Input disabled value={userData.phone ? userData.phone: '-'}>
+                  <Input disabled value={userData.phone ? userData.phone : "-"}>
                     WhatsApp
                   </Input>
                 </S.InputCustom>
@@ -46,37 +52,86 @@ function DetailedUser() {
               <h1>Endereço</h1>
               <S.ContainerData width="1245px" height="264px">
                 <S.InputCustom height={56}>
-                  <Input disabled value={userData.adrress && userData.adress.zipcode ? userData.adress.zipcode : '-'}>
+                  <Input
+                    disabled
+                    value={
+                      userData.adrress && userData.adress.zipcode
+                        ? userData.adress.zipcode
+                        : "-"
+                    }
+                  >
                     CEP
                   </Input>
                 </S.InputCustom>
                 <S.InputCustom height={56}>
-                  <Input disabled value={userData.adrress && userData.adress.street ? userData.adress.street : '-'}>
+                  <Input
+                    disabled
+                    value={
+                      userData.adrress && userData.adress.street
+                        ? userData.adress.street
+                        : "-"
+                    }
+                  >
                     Rua
                   </Input>
                 </S.InputCustom>
                 <S.InputCustom height={56}>
-                  <Input disabled value={userData.adrress && userData.adress.number ? userData.adress.number : '-'}>
+                  <Input
+                    disabled
+                    value={
+                      userData.adrress && userData.adress.number
+                        ? userData.adress.number
+                        : "-"
+                    }
+                  >
                     Número
                   </Input>
                 </S.InputCustom>
                 <S.InputCustom height={56}>
-                  <Input disabled value={userData.adrress && userData.adress.neighborhood ? userData.adress.neighborhood : '-'}>
+                  <Input
+                    disabled
+                    value={
+                      userData.adrress && userData.adress.neighborhood
+                        ? userData.adress.neighborhood
+                        : "-"
+                    }
+                  >
                     Bairro
                   </Input>
                 </S.InputCustom>
                 <S.InputCustom height={56}>
-                  <Input disabled value={userData.adrress && userData.adress.city ? userData.adress.city: '-'}>
+                  <Input
+                    disabled
+                    value={
+                      userData.adrress && userData.adress.city
+                        ? userData.adress.city
+                        : "-"
+                    }
+                  >
                     Cidade
                   </Input>
                 </S.InputCustom>
                 <S.InputCustom height={56}>
-                  <Input disabled value={userData.adrress && userData.adress.state ? userData.adress.state : '-'}>
+                  <Input
+                    disabled
+                    value={
+                      userData.adrress && userData.adress.state
+                        ? userData.adress.state
+                        : "-"
+                    }
+                  >
                     Estado
                   </Input>
                 </S.InputCustom>
                 <S.InputCustom height={56}>
-                  <Input disabled value={userData.adrress && userData.adress.complement ? userData.adress.complement : '-'}>
+                  <Input
+                    disabled
+                    value={
+                      userData.adrress && userData.adress.complement
+                        ? userData.adress.complement
+                        : "-"
+                    }
+                  >
                     Complemento
                   </Input>
                 </S.InputCustom>
@@ -84,9 +139,14 @@ function DetailedUser() {
               <h1>Dados do currículo</h1>
               <S.ContainerData width="1245px" height="100px">
                 <S.InputCustom height={56}>
-                  <Input disabled value={userData.specialties && userData.specialties.length > 0
-                      ? userData.specialties[0].name
-                      : "-"}>
+                  <Input
+                    disabled
+                    value={
+                      userData.specialties && userData.specialties.length > 0
+                        ? userData.specialties[0].name
+                        : "-"
+                    }
+                  >
                     Especialidades
                   </Input>
                 </S.InputCustom>

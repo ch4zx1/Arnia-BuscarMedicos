@@ -19,9 +19,9 @@ export const LoginService = async (email: string, password: string) => {
     }
   } catch (error: any) {
     if (error.response && error.response.status === 403) {
-		throw new Error("Não autorizado. Revise email e senha.");
+      throw new Error("Não autorizado. Revise email e senha.");
     } else {
-		throw new Error(error);
+      throw new Error(error);
     }
   }
 };

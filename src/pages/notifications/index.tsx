@@ -9,8 +9,8 @@ import Delete from "@/assets/delete.svg";
 import Eye from "@/assets/eyes.svg";
 import { getNotificationTableApi } from "@/config/api/notificationAPI";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import { notificationsDataTableType } from '@/config/types'
+import { ToastContainer, toast } from "react-toastify";
+import { notificationsDataTableType } from "@/config/types";
 
 function Notifications() {
   const header = [
@@ -48,11 +48,11 @@ function Notifications() {
         setTotalElements(data.totalElements);
         setOffset(data.pageable.offset);
       } else {
-		notify('Falha ao carregar dados.')
+        notify("Falha ao carregar dados.");
       }
     } catch (error) {
-		notify(error as string)
-	}
+      notify(error as string);
+    }
   }
 
   useEffect(() => {
@@ -197,7 +197,7 @@ function Notifications() {
             </S.ContainerTableBottom>
           </S.ContainerContent>
         </S.ContainerAll>
-		<ToastContainer />
+        <ToastContainer />
       </S.Body>
     </>
   );

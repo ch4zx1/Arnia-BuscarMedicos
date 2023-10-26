@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 interface Props {
-  menuOpen: boolean
+  menuOpen: boolean;
 }
 
 export const Body = styled.div<Props>`
@@ -10,17 +10,17 @@ export const Body = styled.div<Props>`
   background: #046639;
   align-items: center;
   height: 100vh;
-  width: ${({ menuOpen }) => (menuOpen ? '271px' : '70px')};
-`
+  width: ${({ menuOpen }) => (menuOpen ? "271px" : "70px")};
+`;
 
 export const ContainerLogo = styled.div<Props>`
   display: flex;
-  margin-top: ${({ menuOpen }) => (menuOpen ? '24px' : '54px')};
+  margin-top: ${({ menuOpen }) => (menuOpen ? "24px" : "54px")};
   margin-bottom: 48px;
-`
+`;
 
 export const ContainerButton = styled.div<Props>`
-  margin-top: ${({ menuOpen }) => (menuOpen ? '0px' : '26px')};
+  margin-top: ${({ menuOpen }) => (menuOpen ? "0px" : "26px")};
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -39,7 +39,7 @@ export const ContainerButton = styled.div<Props>`
     flex-direction: row;
     align-items: center;
 
-    width: ${({ menuOpen }) => (menuOpen ? '255px' : '55px')};
+    width: ${({ menuOpen }) => (menuOpen ? "255px" : "55px")};
     height: 56px;
 
     color: var(--Branco, #fff);
@@ -62,4 +62,4 @@ export const ContainerButton = styled.div<Props>`
       font-weight: 600;
     }
   }
-`
+`;

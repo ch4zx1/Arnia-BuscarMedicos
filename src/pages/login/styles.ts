@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import Background from '@/assets/background.png'
+import styled from "styled-components";
+import Background from "@/assets/background.png";
 
 export const Body = styled.div`
   width: 100vw;
@@ -11,7 +11,7 @@ export const Body = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-`
+`;
 
 export const ContainerLogin = styled.div`
   display: flex;
@@ -50,7 +50,7 @@ export const ContainerLogin = styled.div`
     font-weight: 700;
     line-height: 140%; /* 50.4px */
   }
-`
+`;
 export const Form = styled.div`
   margin-top: 40px;
   display: flex;
@@ -88,12 +88,12 @@ export const Form = styled.div`
     font-weight: 400;
     line-height: 140%; /* 19.6px */
     letter-spacing: 0.2px;
-	margin-bottom: 5px;
+    margin-bottom: 5px;
   }
   input:focus + label {
     color: var(--sucesso, #00c247);
   }
-`
+`;
 export const ContainerCheckbox = styled.div`
   display: flex;
   flex-direction: row-reverse;
@@ -130,7 +130,7 @@ export const ContainerCheckbox = styled.div`
     text-decoration: none;
     margin-left: 93px;
   }
-`
+`;
 export const ContainerPassword = styled.div`
   display: flex;
   flex-direction: column;
@@ -138,7 +138,7 @@ export const ContainerPassword = styled.div`
   input {
     padding-right: 50px;
   }
-`
+`;
 export const ContainerShowPassword = styled.div`
   display: flex;
   flex-direction: row-reverse;
@@ -152,7 +152,7 @@ export const ContainerShowPassword = styled.div`
     height: 24px;
     background-color: transparent;
   }
-`
+`;
 export const ContainerEntrar = styled.div`
   display: flex;
   margin-top: 40px;
@@ -173,4 +173,4 @@ export const ContainerEntrar = styled.div`
     line-height: 150%; /* 24px */
     letter-spacing: 0.2px;
   }
-`
+`;

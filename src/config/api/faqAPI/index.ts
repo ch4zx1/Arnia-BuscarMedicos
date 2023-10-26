@@ -49,7 +49,7 @@ export const postFaq = async (
       }
     );
 
-	return response.data;
+    return response.data;
   } catch (error: any) {
     if (error.response && error.response.status === 403) {
       window.location.href = "/";

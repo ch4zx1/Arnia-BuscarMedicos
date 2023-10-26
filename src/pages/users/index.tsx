@@ -13,7 +13,6 @@ import Table from "@/components/table/table";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 function Users() {
   const header = [
     { header: "Usuário", width: 200, padding: 10 },
@@ -53,29 +52,28 @@ function Users() {
         throw new Error("Dados não recebidos.");
       }
     } catch (error) {
-		console.log(error)
+      console.log(error);
     }
   };
 
   const getAllUserTableData = async () => {
     try {
-		const data = await getUsersAllTableApi(actualPage, search);
+      const data = await getUsersAllTableApi(actualPage, search);
       if (data) {
         setTableData(data.content);
-		setPages(data.totalPages);
-		setTotalElements(data.totalElements);
-		setOffset(data.pageable.offset);
+        setPages(data.totalPages);
+        setTotalElements(data.totalElements);
+        setOffset(data.pageable.offset);
       } else {
         notify("Dados não recebidos.");
       }
     } catch (error) {
-		notify(error as string);
+      notify(error as string);
     }
   };
 
   const getTableDataByType = async () => {
-
-	let type = "";
+    let type = "";
     if (activeButton === "Médicos") {
       type = "medico";
     }
@@ -84,17 +82,17 @@ function Users() {
     }
 
     try {
-		const data = await getUsersByTypeTableApi(actualPage, search, type);
+      const data = await getUsersByTypeTableApi(actualPage, search, type);
       if (data) {
-		setTableData(data.content);
-		setPages(data.totalPages);
-		setTotalElements(data.totalElements);
-		setOffset(data.pageable.offset);
+        setTableData(data.content);
+        setPages(data.totalPages);
+        setTotalElements(data.totalElements);
+        setOffset(data.pageable.offset);
       } else {
         notify("Dados não recebidos.");
       }
     } catch (error) {
-		notify(error as string);
+      notify(error as string);
     }
   };
 
@@ -287,7 +285,7 @@ function Users() {
           </S.ContainerTableBottom>
         </S.ContainerContent>
       </S.ContainerAll>
-	  <ToastContainer />
+      <ToastContainer />
     </S.Body>
   );
 }

@@ -1,21 +1,6 @@
-import { ReactNode } from 'react'
-import * as S from './style'
-
-type Props = {
-  header: string
-  width: number
-  padding: number
-}
-
-type TableProps = {
-  headers: Array<{
-    header: string
-    width: number
-    padding: number
-  }>
-
-  children: ReactNode
-}
+import { ReactNode } from "react";
+import * as S from "./style";
+import { TableProps, TableItemsProps } from "@/config/types";
 
 export default function Table({ headers, children }: TableProps) {
   return (
@@ -23,7 +8,7 @@ export default function Table({ headers, children }: TableProps) {
       <S.Table cellSpacing={0}>
         <thead>
           <tr>
-            {headers.map((data: Props) => (
+            {headers.map((data: TableItemsProps) => (
               <th style={{ width: data.width, paddingLeft: data.padding }}>
                 {data.header}
               </th>
@@ -33,5 +18,5 @@ export default function Table({ headers, children }: TableProps) {
         <tbody>{children}</tbody>
       </S.Table>
     </S.ContainerTable>
-  )
+  );
 }

@@ -1,8 +1,11 @@
-import api from '@/config/api';
+import api from "@/config/api";
 
-const token = localStorage.getItem('token');
+const token = localStorage.getItem("token");
 
-export const getNotificationTableApi = async (page: number, query: string): Promise<any> => {
+export const getNotificationTableApi = async (
+  page: number,
+  query: string
+): Promise<any> => {
   try {
     const response = await api.get(`/notifications?size=5&page=${page}`, {
       headers: {
@@ -13,7 +16,7 @@ export const getNotificationTableApi = async (page: number, query: string): Prom
     return response.data;
   } catch (error: any) {
     if (error.response && error.response.status === 403) {
-      window.location.href = "./";
+      window.location.href = "/";
       console.error(error);
     } else {
       console.error(error);
@@ -22,10 +25,14 @@ export const getNotificationTableApi = async (page: number, query: string): Prom
   }
 };
 
-export const postNotification = async (title: string, message: string, type: string): Promise<any> => {
+export const postNotification = async (
+  title: string,
+  message: string,
+  type: string
+): Promise<any> => {
   try {
     const response = await api.post(
-      '/notifications',
+      "/notifications",
       {
         title: title,
         message: message,
@@ -38,10 +45,10 @@ export const postNotification = async (title: string, message: string, type: str
       }
     );
 
-	return response.data;
+    return response.data;
   } catch (error: any) {
     if (error.response && error.response.status === 403) {
-      window.location.href = "./";
+      window.location.href = "/";
       console.error(error);
     } else {
       console.error(error);

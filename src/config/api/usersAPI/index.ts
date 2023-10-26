@@ -17,7 +17,7 @@ export const getUsersApi = async () => {
     }
   } catch (error: any) {
     if (error.response && error.response.status === 403) {
-      window.location.href = "./";
+      window.location.href = "/";
       console.error(error);
     } else {
       console.error("Erro ao obter dados da API:", error);
@@ -48,7 +48,7 @@ export const getUsersAllTableApi = async (
     }
   } catch (error: any) {
     if (error.response && error.response.status === 403) {
-      window.location.href = "./";
+      window.location.href = "/";
       console.error(error);
     } else {
       console.error("Erro ao obter dados da API:", error);

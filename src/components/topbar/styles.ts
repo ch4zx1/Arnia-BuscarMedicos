@@ -1,14 +1,14 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 interface Props {
-  menuOpen: boolean
+  menuOpen: boolean;
 }
 
 export const Body = styled.div<Props>`
   display: flex;
   flex-direction: row;
 
-  width: ${({ menuOpen }) => (menuOpen ? '83.8vw' : '95.8vw')};
+  width: ${({ menuOpen }) => (menuOpen ? "83.8vw" : "95.8vw")};
   height: 100px;
   padding: 37px 32px;
   justify-content: space-between;
@@ -20,11 +20,11 @@ export const Body = styled.div<Props>`
     background-color: white;
     border: none;
   }
-`
+`;
 export const ContainerRight = styled.div`
   display: flex;
   flex-direction: row;
-`
+`;
 
 export const ContainerUser = styled.div`
   display: flex;
@@ -32,7 +32,7 @@ export const ContainerUser = styled.div`
   width: 282px;
   height: 56px;
   flex-shrink: 0;
-`
+`;
 
 export const ContainerUserInfo = styled.div`
   display: flex;
@@ -63,11 +63,11 @@ export const ContainerUserInfo = styled.div`
     line-height: 150%; /* 24px */
     letter-spacing: 0.2px;
   }
-`
+`;
 export const ContainerDropdown = styled.div`
-display: flex;
-position: absolute;
+  display: flex;
+  position: absolute;
 
-margin-top: 40px;
-margin-left: 28px;
-`
+  margin-top: 40px;
+  margin-left: 28px;
+`;

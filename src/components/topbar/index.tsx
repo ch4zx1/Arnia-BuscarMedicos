@@ -8,7 +8,7 @@ import { useContext, useEffect, useState } from "react";
 import { sideBarContext } from "@/components/context/sidebarContext";
 import { MeType } from "@/config/types";
 import Dropdown from "../dropdown";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 
 function TopBar() {
   const [me, setMe] = useState<MeType>({});
@@ -24,7 +24,7 @@ function TopBar() {
       } else {
         notify("Erro ao obter dados do usuário.");
       }
-    } catch(error){
+    } catch (error) {
       notify(error as string);
     }
   }
@@ -63,11 +63,11 @@ function TopBar() {
               <img src={ArrowImage}></img>
             </Button>
             <S.ContainerDropdown>
-              {dropdown ? <Dropdown></Dropdown> : ""}
+              {dropdown ? <Dropdown onChange={handleDropDown}></Dropdown> : ""}
             </S.ContainerDropdown>
           </S.ContainerRight>
         </S.Body>
-		<ToastContainer/>
+        <ToastContainer />
       </sideBarContext.Provider>
     </>
   );

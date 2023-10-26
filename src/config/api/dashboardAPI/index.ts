@@ -18,7 +18,7 @@ export const getDashboardApi = async (): Promise<ApiDashboardType | null> => {
     }
   } catch (error: any) {
     if (error.response && error.response.status === 403) {
-      window.location.href = "./";
+      window.location.href = "/";
       console.error("Não autorizado. Entre novamente.");
     } else {
       console.error(error);
@@ -43,8 +43,8 @@ export const getDashboardTableApi = async () => {
     }
   } catch (error: any) {
     if (error.response && error.response.status === 403) {
-      window.location.href = "./";
-	  console.error("Não autorizado. Entre novamente.");
+      window.location.href = "/";
+      console.error("Não autorizado. Entre novamente.");
     } else {
       console.error(error);
     }

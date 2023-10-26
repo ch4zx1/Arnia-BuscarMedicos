@@ -33,7 +33,7 @@ function Sidebar() {
   };
 
   useEffect(() => {
-	setActiveButton(location.pathname)
+    setActiveButton(location.pathname);
   }, [location]);
 
   return (

@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { getMeApi } from "@/config/api/meAPI";
 import Checkbox from "@/components/ui/checkbox";
 import { MeType } from "@/config/types";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 
 function Profile() {
   const [me, setMe] = useState<MeType>({});
@@ -19,7 +19,6 @@ function Profile() {
     toast(text);
   };
 
-
   async function getMeData() {
     try {
       const data = await getMeApi();
@@ -28,7 +27,7 @@ function Profile() {
       } else {
         notify("Erro ao obter dados do usuário.");
       }
-    } catch(error){
+    } catch (error) {
       notify(error as string);
     }
   }
@@ -187,7 +186,7 @@ function Profile() {
           ) : null}
         </S.ContainerRight>
       </S.ContainerContent>
-	  <ToastContainer/>
+      <ToastContainer />
     </S.Body>
   );
 }

@@ -90,19 +90,68 @@ export type ApiDashboardType = {
 };
 
 export type notificationsDataTableType = {
-	title?: string;
-	sendingDate?: string;
-  };
+  title?: string;
+  sendingDate?: string;
+};
 
 export type MeType = {
-	id?: number,
-	email?: string,
-	firstName?: string,
-	lastName?: string,
-	profiles?: [{
-	  id: number,
-	  name: string,
-	  authority: string;
-	}];
-	enabled?: boolean;
-  };
+  id?: number;
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+  profiles?: [
+    {
+      id: number;
+      name: string;
+      authority: string;
+    }
+  ];
+  enabled?: boolean;
+};
+
+export type LayoutProps = {
+  children?: ReactNode;
+};
+
+export type OnChangeType = (value: boolean) => void;
+export type OnChangeProps = {
+  onChange: OnChangeType;
+};
+
+export type OnSearchType = (value: string) => void;
+export type OnSearchProps = {
+  onSearch: OnSearchType;
+};
+
+export type TimeProps = {
+  locale: string;
+};
+
+export type StatusProps = {
+  type: "MEDICOS" | "CONTRATANTES";
+  n1: number;
+  n2: number;
+  n3: number;
+};
+
+export type CardProps = {
+  number: number;
+  type: "MEDICOS" | "CONTRATANTES";
+  data: number;
+};
+
+export type TableItemsProps = {
+  header: string;
+  width: number;
+  padding: number;
+};
+
+export type TableProps = {
+  headers: Array<{
+    header: string;
+    width: number;
+    padding: number;
+  }>;
+
+  children: ReactNode;
+};
