@@ -1,13 +1,19 @@
-import { useEffect, useState } from "react";
-import * as S from "./styles";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   getUsersApi,
   getUsersAllTableApi,
   getUsersByTypeTableApi,
 } from "@/config/api/usersAPI";
+import { formatPhoneNumber, formatProfileName } from "@/utils";
+import { usersType, User } from "@/config/types";
+import * as S from "./styles";
 import Search from "@/components/search";
 import Table from "@/components/table/table";
-import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+
 function Users() {
   const header = [
     { header: "Usuário", width: 200, padding: 10 },
@@ -19,52 +25,6 @@ function Users() {
     { header: "Tipo de usuário", width: 200, padding: 10 },
   ];
 
-  type usersType = {
-    total?: number;
-    totalContractor?: number;
-    totalDoctors?: number;
-  };
-
-  type User = {
-    id?: number;
-    email?: string;
-    firstName?: string;
-    lastName?: string;
-    phone?: string;
-    profiles: [
-      {
-        id?: number;
-        name: string;
-        authority?: string;
-      }
-    ];
-    specialties?: [
-      {
-        id?: number;
-        name?: string;
-      }
-    ];
-    address?: [
-      {
-        id?: number;
-        zipcode?: string;
-        street?: string;
-        number?: string;
-        neighborhood?: string;
-        city?: string;
-        state?: string;
-        complement?: string;
-      }
-    ];
-    enabled?: boolean;
-    authorities?: [
-      {
-        authority?: string;
-      }
-    ];
-    username?: string;
-  };
-
   const [users, setUsers] = useState<usersType>({
     total: 0,
     totalContractor: 0,
@@ -72,7 +32,7 @@ function Users() {
   });
   const [activeButton, setActiveButton] = useState("Todos");
   const [tableData, setTableData] = useState([]);
-  const [pages, setPages] = useState<number>(0);
+  const [pages, setPages] = useState(0);
   const [actualPage, setActualPage] = useState(1);
   const [visiblePages, setVisiblePages] = useState(4);
   const [search, setSearch] = useState("");
@@ -80,21 +40,42 @@ function Users() {
   const [offset, setOffset] = useState(0);
   const navigate = useNavigate();
 
-  async function getUsersData() {
-    const data = await getUsersApi();
-    setUsers(data);
-  }
+  const notify = (text: string): void => {
+    toast(text);
+  };
 
-  async function getAllUserTableData() {
-    const data = await getUsersAllTableApi(actualPage, search);
-    setTableData(data.content);
-    setPages(data.totalPages);
-    setTotalElements(data.totalElements);
-    setOffset(data.pageable.offset);
-  }
+  const getUsersData = async () => {
+    try {
+      const data = await getUsersApi();
+      if (data) {
+        setUsers(data);
+      } else {
+        throw new Error("Dados não recebidos.");
+      }
+    } catch (error) {
+		console.log(error)
+    }
+  };
 
-  async function getTableDataByType() {
-    let type = "";
+  const getAllUserTableData = async () => {
+    try {
+		const data = await getUsersAllTableApi(actualPage, search);
+      if (data) {
+        setTableData(data.content);
+		setPages(data.totalPages);
+		setTotalElements(data.totalElements);
+		setOffset(data.pageable.offset);
+      } else {
+        notify("Dados não recebidos.");
+      }
+    } catch (error) {
+		notify(error as string);
+    }
+  };
+
+  const getTableDataByType = async () => {
+
+	let type = "";
     if (activeButton === "Médicos") {
       type = "medico";
     }
@@ -102,13 +83,20 @@ function Users() {
       type = "contratante";
     }
 
-    const data = await getUsersByTypeTableApi(actualPage, search, type);
-
-    setTableData(data.content);
-    setPages(data.totalPages);
-    setTotalElements(data.totalElements);
-    setOffset(data.pageable.offset);
-  }
+    try {
+		const data = await getUsersByTypeTableApi(actualPage, search, type);
+      if (data) {
+		setTableData(data.content);
+		setPages(data.totalPages);
+		setTotalElements(data.totalElements);
+		setOffset(data.pageable.offset);
+      } else {
+        notify("Dados não recebidos.");
+      }
+    } catch (error) {
+		notify(error as string);
+    }
+  };
 
   const handleButtonClick = (buttonName: string) => {
     setActiveButton(buttonName);
@@ -124,36 +112,6 @@ function Users() {
       getTableDataByType();
     }
   }, [actualPage, activeButton, search]);
-
-  function formatPhoneNumber(phoneNumber: string): string {
-    const numericOnly: string = phoneNumber.replace(/\D/g, "");
-
-    const hasElevenDigits: boolean = numericOnly.length === 11;
-
-    const formattedNumber: string = hasElevenDigits
-      ? `${numericOnly.substring(0, 2)} ${numericOnly.substring(
-          2,
-          3
-        )}${numericOnly.substring(3, 7)}-${numericOnly.substring(7, 11)}`
-      : `${numericOnly.substring(0, 2)} ${numericOnly.substring(
-          2,
-          6
-        )}-${numericOnly.substring(6, 10)}`;
-
-    return formattedNumber;
-  }
-
-  function formatProfileName(profileName: string): string {
-    const capitalized = profileName
-      .toLowerCase()
-      .replace(/\b\w/g, (firstChar) => firstChar.toUpperCase());
-
-    if (capitalized === "Medico") {
-      return "Médico";
-    }
-
-    return capitalized;
-  }
 
   const goToPreviousPage = () => {
     if (actualPage > 1) {
@@ -329,6 +287,7 @@ function Users() {
           </S.ContainerTableBottom>
         </S.ContainerContent>
       </S.ContainerAll>
+	  <ToastContainer />
     </S.Body>
   );
 }

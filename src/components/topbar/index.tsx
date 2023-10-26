@@ -6,27 +6,27 @@ import ArrowImage from "@/assets/arrow.svg";
 import { Button } from "../ui";
 import { useContext, useEffect, useState } from "react";
 import { sideBarContext } from "@/components/context/sidebarContext";
+import { MeType } from "@/config/types";
 import Dropdown from "../dropdown";
-
-type MeType = {
-	id?: number,
-	email?: string,
-	firstName?: string,
-	lastName?: string,
-	profiles?: [{
-	  id: number,
-	  name: string,
-	  authority: string;
-	}];
-	enabled?: boolean;
-  };
+import { ToastContainer, toast } from 'react-toastify';
 
 function TopBar() {
   const [me, setMe] = useState<MeType>({});
+  const notify = (text: string): void => {
+    toast(text);
+  };
 
   async function getMeData() {
-    const data = await getMeApi();
-    setMe(data);
+    try {
+      const data = await getMeApi();
+      if (data) {
+        setMe(data);
+      } else {
+        notify("Erro ao obter dados do usuário.");
+      }
+    } catch(error){
+      notify(error as string);
+    }
   }
 
   useEffect(() => {
@@ -67,6 +67,7 @@ function TopBar() {
             </S.ContainerDropdown>
           </S.ContainerRight>
         </S.Body>
+		<ToastContainer/>
       </sideBarContext.Provider>
     </>
   );

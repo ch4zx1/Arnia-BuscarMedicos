@@ -7,7 +7,7 @@ import okMark from "@/assets/check-mark-verified.gif"
 import { useEffect, useState } from "react";
 import Modal from 'react-bootstrap/Modal';
 import { postFaq } from "@/config/api/faqAPI";
-// import okMark from '@assets/check-mark-verified.gif';
+import { ToastContainer, toast } from 'react-toastify';
 
 function NewFAQ() {
   const navigate = useNavigate();
@@ -20,13 +20,22 @@ function NewFAQ() {
   const userData =  location.state
 
   const [show, setShow] = useState(false);
+  
+  const notify = (text: string): void => {
+    toast(text);
+  };
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   async function newFaqApi (){
-    handleShow()
-    await postFaq(title, message, "teste")
+	try{
+		await postFaq(title, message, "teste")
+		handleShow()
+	}
+	catch(error){
+		notify(error as string)
+	}
     
   }
 
@@ -78,6 +87,7 @@ function NewFAQ() {
             </S.ContainerScroll>
           </S.ContainerContent>
         </S.ContainerAll>
+		<ToastContainer/>
       </S.Body>
 
     </>

@@ -4,33 +4,33 @@ import ArrowGrey from "@/assets/rightc.svg";
 import ArrowBack from "@/assets/arrowback.svg";
 import Edit from "@/assets/edit.svg";
 import Delete from "@/assets/delete.svg";
-import Plus from "@/assets/plus.svg"
+import Plus from "@/assets/plus.svg";
 import { useEffect, useState } from "react";
 import { getMeApi } from "@/config/api/meAPI";
 import Checkbox from "@/components/ui/checkbox";
-
-type MeType = {
-	id?: number,
-	email?: string,
-	firstName?: string,
-	lastName?: string,
-	profiles?: [{
-	  id: number,
-	  name: string,
-	  authority: string;
-	}];
-	enabled?: boolean;
-  };
+import { MeType } from "@/config/types";
+import { ToastContainer, toast } from 'react-toastify';
 
 function Profile() {
   const [me, setMe] = useState<MeType>({});
   const [active, setActive] = useState("Dados");
   const [activeadmin, setActiveAdmin] = useState<null | number>(null);
-  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const notify = (text: string): void => {
+    toast(text);
+  };
+
 
   async function getMeData() {
-    const data = await getMeApi();
-    setMe(data);
+    try {
+      const data = await getMeApi();
+      if (data) {
+        setMe(data);
+      } else {
+        notify("Erro ao obter dados do usuário.");
+      }
+    } catch(error){
+      notify(error as string);
+    }
   }
 
   useEffect(() => {
@@ -42,8 +42,6 @@ function Profile() {
     { firstname: "Júlio", lastname: "Soares", email: "julio@gmail.com" },
     { firstname: "Mariana", lastname: "Goulart", email: "mariana@gmail.com" },
   ];
-
-
 
   return (
     <S.Body>
@@ -71,7 +69,7 @@ function Profile() {
             <span>Administradores</span>
             <img src={active === "Admin" ? ArrowWhite : ArrowGrey}></img>
           </S.Button>
-		  </S.ContainerLeft>
+        </S.ContainerLeft>
         <S.ContainerRight>
           {active === "Dados" ? (
             <>
@@ -108,7 +106,11 @@ function Profile() {
                     <p>{admin.email}</p>
                     <S.ContainerActions>
                       <S.ButtonEdit>
-                        <img src={Edit} alt="editar" onClick={() => setActiveAdmin(index)}/>
+                        <img
+                          src={Edit}
+                          alt="editar"
+                          onClick={() => setActiveAdmin(index)}
+                        />
                       </S.ButtonEdit>
                       <S.ButtonEdit>
                         <img src={Delete} alt="deletar" />
@@ -118,23 +120,31 @@ function Profile() {
                   <S.Separator></S.Separator>
                 </div>
               ))}
-			  <S.ModalButton>
-				<img src={Plus}></img>
-				<span>Novo Perfil</span>
-			  </S.ModalButton>
+              <S.ModalButton>
+                <img src={Plus}></img>
+                <span>Novo Perfil</span>
+              </S.ModalButton>
             </>
           ) : null}
-		  {active === "Admin" && activeadmin !== null ? (
+          {active === "Admin" && activeadmin !== null ? (
             <>
-			<S.ContainerTop>
-			<S.BackButton onClick={() => setActiveAdmin(null)}>
-              <img src={ArrowBack}></img>
-            </S.BackButton>
-			<h2>{(admins[activeadmin].firstname) + " " + (admins[activeadmin].lastname)}</h2>
-			</S.ContainerTop>
-			<S.ContainerInfo>
+              <S.ContainerTop>
+                <S.BackButton onClick={() => setActiveAdmin(null)}>
+                  <img src={ArrowBack}></img>
+                </S.BackButton>
+                <h2>
+                  {admins[activeadmin].firstname +
+                    " " +
+                    admins[activeadmin].lastname}
+                </h2>
+              </S.ContainerTop>
+              <S.ContainerInfo>
                 <span>Nome</span>
-                <p>{(admins[activeadmin].firstname) + " " + (admins[activeadmin].lastname)}</p>
+                <p>
+                  {admins[activeadmin].firstname +
+                    " " +
+                    admins[activeadmin].lastname}
+                </p>
                 <S.ButtonEdit>
                   <img src={Edit} alt="editar" />
                 </S.ButtonEdit>
@@ -147,7 +157,7 @@ function Profile() {
                   <img src={Edit} alt="editar" />
                 </S.ButtonEdit>
               </S.ContainerInfo>
-			  <S.Separator></S.Separator>
+              <S.Separator></S.Separator>
               <S.ContainerInfo>
                 <span>Senha</span>
                 <p>*************</p>
@@ -155,28 +165,29 @@ function Profile() {
                   <img src={Edit} alt="editar" />
                 </S.ButtonEdit>
               </S.ContainerInfo>
-			  <S.Separator></S.Separator>
-			  <S.ContainerPermissions>
-				<span>Permissões</span>
-				<S.ContainerCB>
-				<Checkbox checked>Admin. geral</Checkbox>
-				</S.ContainerCB>
-				<S.ContainerCB>
-				<Checkbox>Admin. parcial</Checkbox>
-				</S.ContainerCB>
-				<S.ContainerDButtons>
-					<S.ContainerButtonLeft>
-						<button>Salvar</button>
-					</S.ContainerButtonLeft>
-					<S.ContainerButtonRight>
-						<button>Excluir perfil</button>
-					</S.ContainerButtonRight>
-				</S.ContainerDButtons>
-			  </S.ContainerPermissions>
+              <S.Separator></S.Separator>
+              <S.ContainerPermissions>
+                <span>Permissões</span>
+                <S.ContainerCB>
+                  <Checkbox checked>Admin. geral</Checkbox>
+                </S.ContainerCB>
+                <S.ContainerCB>
+                  <Checkbox>Admin. parcial</Checkbox>
+                </S.ContainerCB>
+                <S.ContainerDButtons>
+                  <S.ContainerButtonLeft>
+                    <button>Salvar</button>
+                  </S.ContainerButtonLeft>
+                  <S.ContainerButtonRight>
+                    <button>Excluir perfil</button>
+                  </S.ContainerButtonRight>
+                </S.ContainerDButtons>
+              </S.ContainerPermissions>
             </>
           ) : null}
         </S.ContainerRight>
       </S.ContainerContent>
+	  <ToastContainer/>
     </S.Body>
   );
 }

@@ -1,33 +1,54 @@
-import api from '@/config/api'
-const token = localStorage.getItem('token')
+import api from "@/config/api";
+import { ApiDashboardType } from "@/config/types";
 
-type DashboardType = {
-  doctor: {
-      total: number,
-      available: number,
-      unavailable: number
-  },
-  contractor: {
-      total: number,
-      available: number,
-      unavailable: number
+const token = localStorage.getItem("token");
+
+export const getDashboardApi = async (): Promise<ApiDashboardType | null> => {
+  try {
+    const response = await api.get("/users/dashboard", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      console.log(response.status);
+    }
+  } catch (error: any) {
+    if (error.response && error.response.status === 403) {
+      window.location.href = "./";
+      console.error("Não autorizado. Entre novamente.");
+    } else {
+      console.error(error);
+    }
   }
-}
 
-export const getDashboardApi = ():Promise<DashboardType> =>
-  api
-    .get('/users/dashboard', {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-    .then(response => response.data)
+  return null;
+};
 
-export const getDashboardTableApi = () =>
-  api
-    .get('/users?page=1&size=4&sort=desc', {
+export const getDashboardTableApi = async () => {
+  try {
+    const response = await api.get("/users?page=1&size=4&sort=desc", {
       headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-    .then(response => response.data.content)
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (response.status === 200) {
+      return response.data.content;
+    } else {
+      console.error(response.status);
+    }
+  } catch (error: any) {
+    if (error.response && error.response.status === 403) {
+      window.location.href = "./";
+	  console.error("Não autorizado. Entre novamente.");
+    } else {
+      console.error(error);
+    }
+  }
+
+  return null;
+};

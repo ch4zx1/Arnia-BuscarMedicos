@@ -76,7 +76,7 @@ border-radius: 0px 24px 24px 24px;
 background: var(--Branco, #FFF);
 /* Sombra 3 */
 box-shadow: 0px 0px 25px 0px rgba(163, 163, 163, 0.20);
-
+height: 570px;
 width: 79.3vw;
 min-height: fit-content;
 max-width: 1332px;
@@ -166,8 +166,8 @@ export const ButtonEdit = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   flex-shrink: 0;
   border-radius: 8px;
   border: 1px solid var(--cinzas-cinza-300, #e0e0e0);

@@ -1,11 +1,22 @@
-import api from '@/config/api'
-const token = localStorage.getItem('token')
+import api from '@/config/api';
 
-export const getMeApi = () =>
-  api
-    .get('/me', {
+const token = localStorage.getItem('token');
+
+export const getMeApi = async () => {
+  try {
+    const response = await api.get('/me', {
       headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-    .then(response => response.data)
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return response.data;
+  } catch (error: any) {
+    if (error.response && error.response.status === 403) {
+      //window.location.href = "/";
+      console.error(error);
+    } else {
+      console.error(error);
+      throw error;
+    }}
+};

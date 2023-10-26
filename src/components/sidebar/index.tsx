@@ -33,8 +33,8 @@ function Sidebar() {
   };
 
   useEffect(() => {
-    localStorage.setItem("activebutton", activeButton);
-  }, [activeButton]);
+	setActiveButton(location.pathname)
+  }, [location]);
 
   return (
     <>

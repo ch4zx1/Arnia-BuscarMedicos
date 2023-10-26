@@ -101,7 +101,7 @@ justify-content: space-between;
 margin-top: 24px;
 margin-right: 24px;
 margin-left: 10px;
-margin-bottom: 24px;
+margin-bottom: 6px;
 
 p{
 	color: var(--cinzas-cinza-900, #212121);

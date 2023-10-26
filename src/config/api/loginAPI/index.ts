@@ -1,15 +1,27 @@
-import api from '@/config/api'
-import { useNavigate } from 'react-router-dom'
+import api from "@/config/api";
 
-export const LoginService = async (email: string, Password: string) => {
+export const LoginService = async (email: string, password: string) => {
   try {
-    const userData = await api.post(
-      `/public/register/login?email=${email}&password=${Password}`
-    )
-    const { token } = userData.data
-    localStorage.setItem('token', token)
-    api.defaults.headers.Authorization = token
-  } catch (error) {
-    console.log(error)
+    const response = await api.post(
+      `/public/register/login?email=${email}&password=${password}`
+    );
+
+    const { token } = response.data;
+
+    localStorage.setItem("token", token);
+
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+
+    if (response.status === 200) {
+      window.location.href = "/dashboard";
+    } else {
+      console.error(response.status);
+    }
+  } catch (error: any) {
+    if (error.response && error.response.status === 403) {
+		throw new Error("Não autorizado. Revise email e senha.");
+    } else {
+		throw new Error(error);
+    }
   }
-}
+};
