@@ -7,6 +7,7 @@ import { Modal } from "react-bootstrap";
 import { postNotification } from "@/config/api/notificationAPI";
 import okMark from "@/assets/check-mark-verified.gif";
 import { ToastContainer, toast } from "react-toastify";
+import TextArea from "@/components/ui/textarea";
 
 function NewNotification() {
   const navigate = useNavigate();
@@ -14,7 +15,6 @@ function NewNotification() {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [message, setMessage] = useState("");
-  const userData = location.state;
 
   const [confirmationShow, setConfirmationShow] = useState(false);
 
@@ -31,14 +31,20 @@ function NewNotification() {
   };
 
   async function newNotificationApi() {
-    try {
-      await postNotification(title, message, "teste");
-      handleConfirmationClose();
-      handleConfirmatedShow();
-      setTimeout(() => navigate("/notifications"), 2000);
-    } catch (error) {
-      notify(error as string);
-    }
+	if(title != "" && message != "")
+	{
+		try {
+			await postNotification(title, message, "teste");
+			handleConfirmationClose();
+			handleConfirmatedShow();
+			setTimeout(() => navigate("/notifications"), 2000);
+		  } catch (error) {
+			notify(error as string);
+		  }
+	}
+	else{
+		notify("Preencha todos os campos!");
+	}
   }
 
   return (
@@ -47,7 +53,7 @@ function NewNotification() {
         show={confirmationShow}
         onHide={handleConfirmationClose}
         centered
-        size="xl"
+        size="lg"
       >
         <Modal.Body>
           <S.ModalHeader>
@@ -62,26 +68,27 @@ function NewNotification() {
           </S.ModalHeader>
           <S.ModalBody>
             <S.ContainerScroll>
-              <S.ContainerData width="820px" height="194px">
-                <S.InputCustom height={56}>
+              <S.ContainerData2 width="730px" height="194px">
+                <S.InputCustom disable height={56} width={350}>
                   <Input disabled value={title}>
                     Titulo
                   </Input>
                 </S.InputCustom>
-                <S.InputCustom height={56}>
+                <S.InputCustom disable height={56} width={350}>
                   <Input disabled value={date}>
                     Data de envio
                   </Input>
                 </S.InputCustom>
-                <S.InputCustom height={182} width={820}>
+                <S.InputCustom disable height={182} width={730}>
                   <Input disabled value={message}>
                     Mensagem
                   </Input>
                 </S.InputCustom>
-              </S.ContainerData>
+              </S.ContainerData2>
             </S.ContainerScroll>
             <S.ModalFooter>
-              <h2>
+				<S.ContainerFotter>
+				<h2>
                 Esse procedimento <span>não pode ser desfeito</span>
               </h2>
               <S.CancelButton onClick={handleConfirmationClose}>
@@ -94,6 +101,7 @@ function NewNotification() {
               >
                 Confirmar e enviar notificação
               </S.ConfirmButton>
+				</S.ContainerFotter>
             </S.ModalFooter>
           </S.ModalBody>
         </Modal.Body>
@@ -106,7 +114,9 @@ function NewNotification() {
               X
             </button>
             <img src={okMark} />
-            <h2>Notificação salva com sucesso</h2>
+			<S.ContainerConfirmation>
+			<span>Notificação salva com sucesso</span>
+			</S.ContainerConfirmation>
           </S.ModalBody>
         </Modal.Body>
       </Modal>
@@ -134,9 +144,9 @@ function NewNotification() {
                   </Input>
                 </S.InputCustom>
                 <S.InputCustom height={182} width={820}>
-                  <Input onChange={(e) => setMessage(e.target.value)}>
+                  <TextArea onChange={(e) => setMessage(e.target.value)}>
                     Mensagem
-                  </Input>
+                  </TextArea>
                 </S.InputCustom>
               </S.ContainerData>
               <S.ButtonCustom onClick={() => handleConfirmationShow()}>

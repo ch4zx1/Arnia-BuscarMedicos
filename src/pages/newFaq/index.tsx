@@ -8,17 +8,12 @@ import { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { postFaq } from "@/config/api/faqAPI";
 import { ToastContainer, toast } from "react-toastify";
+import TextArea from "@/components/ui/textarea";
 
 function NewFAQ() {
   const navigate = useNavigate();
-  const location = useLocation();
   const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
   const [message, setMessage] = useState("");
-  const [postAPI, setPostAPI] = useState(false);
-
-  const userData = location.state;
-
   const [show, setShow] = useState(false);
 
   const notify = (text: string): void => {
@@ -29,12 +24,20 @@ function NewFAQ() {
   const handleShow = () => setShow(true);
 
   async function newFaqApi() {
-    try {
-      await postFaq(title, message, "teste");
-      handleShow();
-    } catch (error) {
-      notify(error as string);
-    }
+	if(title != "" && message != "")
+	{
+		try {
+			await postFaq(title, message, "teste");
+			handleShow();
+			setTimeout(() => navigate("/faq"), 2000);
+		  } catch (error) {
+			notify(error as string);
+		  }
+	}
+	else
+	{
+		notify('Preenche os campos antes de enviar.');
+	}
   }
 
   return (
@@ -44,7 +47,9 @@ function NewFAQ() {
           <S.ModalBody>
             <button onClick={handleClose}>X</button>
             <img src={okMark} />
-            <h2>Pergunta salva com sucesso</h2>
+			<S.ContainerConfirmation>
+			<span>Pergunta salva com sucesso</span>
+			</S.ContainerConfirmation>
           </S.ModalBody>
         </Modal.Body>
       </Modal>
@@ -68,9 +73,9 @@ function NewFAQ() {
                 </S.InputCustom>
 
                 <S.InputCustom height={182} width={820}>
-                  <Input onChange={(e) => setMessage(e.target.value)}>
+                  <TextArea onChange={(e) => setMessage(e.target.value)}>
                     Mensagem
-                  </Input>
+                  </TextArea>
                 </S.InputCustom>
               </S.ContainerData>
               <S.ButtonCustom onClick={() => newFaqApi()}>

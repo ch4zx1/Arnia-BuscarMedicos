@@ -106,7 +106,7 @@ export const ContainerScroll = styled.div`
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: #046639;
+    background: #E0E0E0;
   }
 `;
 

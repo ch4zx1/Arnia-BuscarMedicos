@@ -158,7 +158,7 @@ export const ContainerContentRowRight = styled.div`
 
 export const ContainerTable = styled.div`
   display: flex;
-  margin-top: 32px;
+  margin-top: 18px;
   height: 500px;
 `;
 

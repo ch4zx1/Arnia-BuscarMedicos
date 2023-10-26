@@ -8,6 +8,7 @@ type PropsData = {
 type PropsInput = {
   height: number;
   width?: number;
+  disable?: boolean;
 };
 
 export const Modal = styled.div`
@@ -113,7 +114,7 @@ export const ContainerScroll = styled.div`
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: #046639;
+    background: #E0E0E0;
   }
 `;
 
@@ -125,6 +126,15 @@ export const ContainerData = styled.div<PropsData>`
   justify-content: space-between;
   margin-top: 20px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
+`;
+
+export const ContainerData2 = styled.div<PropsData>`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   flex-wrap: wrap;
 `;
 
@@ -147,7 +157,7 @@ export const ButtonCustom = styled.button`
 export const InputCustom = styled.div<PropsInput>`
   padding: 10px 10px 0px 0px;
   height: ${(props) => props.height + 34}px;
-  width: 400px;
+  width: ${(props) => (props.width ? props.width : 400)}px;
 
   position: relative;
 
@@ -155,9 +165,9 @@ export const InputCustom = styled.div<PropsInput>`
     width: ${(props) => (props.width ? props.width : 400)}px;
     height: ${(props) => props.height}px;
     border-radius: 16px;
-    border: 1px solid var(--cinzas-cinza-300, #e0e0e0);
-    background: var(--cinzas-cinza-50, #fafafa);
-    color: var(--cinzas-cinza-700, #616161);
+	border-radius: 16px;
+	border: 1px solid var(--cinzas-cinza-300, #E0E0E0);
+	background: ${(props) => (props.disable ? '#FAFAFA' : '#FFF')};
     /* 16px Regular */
     font-family: Poppins;
     font-size: 16px;
@@ -167,6 +177,44 @@ export const InputCustom = styled.div<PropsInput>`
     letter-spacing: 0.2px;
     margin-top: 0px;
     padding: 16px 20px 16px 20px;
+  }
+
+  textarea {
+    width: ${(props) => (props.width ? props.width : 400)}px;
+    height: ${(props) => props.height}px;
+    border-radius: 16px;
+	border-radius: 16px;
+	border: 1px solid var(--cinzas-cinza-300, #E0E0E0);
+	background: ${(props) => (props.disable ? '#FAFAFA' : '#FFF')};
+    /* 16px Regular */
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+    letter-spacing: 0.2px;
+    margin-top: 0px;
+    padding: 16px 20px 16px 20px;
+	resize: none;
+
+	&::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: none;
+	margin-top: 15px;
+	margin-bottom: 15px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #eee;
+    border-radius: 24px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #E0E0E0;
+  }
   }
 
   label {
@@ -325,6 +373,24 @@ export const ModalHeader = styled.div`
   }
 `;
 
+export const ContainerConfirmation = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: center;
+
+margin-top: 32px;
+margin-bottom: 32px;
+
+  span {
+    font-family: Sora;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%;
+    color: #212121;
+    margin-top: 25px;
+  }
+`
 export const ModalBody = styled.div`
   display: flex;
   flex-direction: column;
@@ -339,7 +405,6 @@ export const ModalBody = styled.div`
 
   .closeButton {
     align-self: flex-end;
-    margin-right: 0px;
     border: none;
     background-color: transparent;
   }
@@ -360,7 +425,8 @@ export const ModalBody = styled.div`
 `;
 export const ModalFooter = styled.div`
   display: flex;
-  margin-top: -280px;
+  margin-top: -300px;
+  
   h2 {
     width: 210px;
     font-family: Poppins;
@@ -370,22 +436,22 @@ export const ModalFooter = styled.div`
     line-height: 150%;
     color: #212121;
 
-    div {
-      gap: 16px;
-    }
-
     span {
       font-weight: 600;
     }
   }
 `;
 
+export const ContainerFotter = styled.div`
+display: flex;
+flex-direction: row;
+
+margin-left: 15px;
+`
+
 export const CancelButton = styled.button`
-  width: 203px;
+  width: 160px;
   height: 48px;
-  padding: 12px 64px;
-  justify-content: center;
-  align-items: center;
   gap: 10px;
   border-radius: 16px;
   background-color: #f33;
@@ -400,7 +466,7 @@ export const CancelButton = styled.button`
 `;
 
 export const ConfirmButton = styled.button`
-  width: 356px;
+  width: 306px;
   height: 48px;
   justify-content: center;
   align-items: center;
