@@ -57,6 +57,7 @@ function Users() {
   };
 
   const getAllUserTableData = async () => {
+	console.log(search)
     try {
       const data = await getUsersAllTableApi(actualPage, search);
       if (data) {
@@ -80,10 +81,12 @@ function Users() {
     if (activeButton === "Contratantes") {
       type = "contratante";
     }
-
+	console.log(search)
     try {
       const data = await getUsersByTypeTableApi(actualPage, search, type);
+	
       if (data) {
+		
         setTableData(data.content);
         setPages(data.totalPages);
         setTotalElements(data.totalElements);

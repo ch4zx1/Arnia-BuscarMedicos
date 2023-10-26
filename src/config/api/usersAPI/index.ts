@@ -32,7 +32,7 @@ export const getUsersAllTableApi = async (
 ): Promise<any> => {
   try {
     const response = await api.get(
-      `/users?page=${page}&size=6&sort=asc&search=${query}`,
+      `/users?page=${page}&size=6&sort=asc&searchName=${query}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

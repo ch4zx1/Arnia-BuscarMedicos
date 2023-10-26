@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
-type Props = {};
-
 export const Body = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
+
+export const ContainerAll = styled.div`
   display: flex;
   flex-direction: column;
   padding: 32px;
